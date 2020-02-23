@@ -1,0 +1,66 @@
+
+# 代码编译
+cmake_minimum_required(VERSION 2.6)
+# setup the project
+project(thsrv)
+# default dir
+
+# set(CMAKE_CURRENT_LIST_DIR )  # the absoluted path of CMakeLists.txt
+
+# set(PROJECT_SOURCE_DIR base)  # thsrv/base
+# set(PROJECT_BINARY_DIR ${CMAKE_CURRENT_SOURCE_DIR})
+# set(EXECUTABLE_OUTPUT_PATH bin)
+
+set(TEST_SOURCE_DIR .)
+
+# set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR})
+
+# self-defined dir
+set(PROJECT_INC_DIR ${PROJECT_SOURCE_DIR})
+
+# setup the compile mode.
+set(CXX_FLAGS
+ -g
+ # -DVALGRIND
+ # -DCHECK_PTHREAD_RETURN_VALUE
+ # -D_FILE_OFFSET_BITS=64
+ -Wall
+ -Wextra
+ -Werror
+ -Wconversion
+ -Wno-unused-parameter
+ -Wold-style-cast
+ -Woverloaded-virtual
+ -Wpointer-arith
+ -Wshadow
+ -Wwrite-strings
+ -march=native
+ # -MMD
+ -std=c++11
+ -rdynamic
+ )
+string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
+ 
+find_package(Boost REQUIRED)
+
+set(SRC_LIST ${PROJECT_SOURCE_DIR}/TimeStamp.cpp)
+set(SRC_LIST ${SRC_LIST} ${PROJECT_SOURCE_DIR}/Logger.cpp ${PROJECT_SOURCE_DIR}/LogStream.cpp)
+
+file(GLOB HEADERS "${PROJECT_INC_DIR}/*.h")
+
+include_directories(
+	${PROJECT_INC_DIR}
+	${PROJECT_SOURCE_DIR}
+	
+)
+message("CMAKE_CURRENT_SOURCE_DIR = " ${CMAKE_CURRENT_SOURCE_DIR})
+
+message("PROJECT_SOURCE_DIR = " ${PROJECT_SOURCE_DIR})
+message("PROJECT_BINARY_DIR = " ${PROJECT_BINARY_DIR})
+message("PROJECT_NAME = " ${PROJECT_NAME})
+
+message("HEADERS = " ${HEADERS})
+
+# setup the target
+# add_executable(logger_test ${TEST_SOURCE_DIR}/logger_test.cpp ${SRC_LIST})
+# target_link_libraries(logger_test rt)

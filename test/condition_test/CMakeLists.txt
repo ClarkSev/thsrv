@@ -1,0 +1,3 @@
+
+add_executable(condition_test condition_test.cpp)
+target_link_libraries(condition_test thsrv_base pthread)

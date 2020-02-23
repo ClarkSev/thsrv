@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libthsrv_net.a  CMakeFiles/thsrv_net.dir/Acceptor.cpp.o CMakeFiles/thsrv_net.dir/Buffer.cpp.o CMakeFiles/thsrv_net.dir/Channel.cpp.o CMakeFiles/thsrv_net.dir/Connector.cpp.o CMakeFiles/thsrv_net.dir/EventLoop.cpp.o CMakeFiles/thsrv_net.dir/InetAddress.cpp.o CMakeFiles/thsrv_net.dir/Poller.cpp.o CMakeFiles/thsrv_net.dir/Socket.cpp.o CMakeFiles/thsrv_net.dir/TcpClient.cpp.o CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o CMakeFiles/thsrv_net.dir/TcpServer.cpp.o
+/usr/bin/ranlib ../../lib/libthsrv_net.a
