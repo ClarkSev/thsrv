@@ -18,6 +18,8 @@ test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/Callback.h
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/Channel.h
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/EventLoop.h
+test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/EventLoopThread.h
+test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/EventLoopThreadPool.h
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/InetAddress.h
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/Poller.h
 test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o: ../thsrv/net/Socket.h

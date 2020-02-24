@@ -42,6 +42,7 @@ public:  // public method
 	Acceptor(EventLoop* tloop,const InetAddress& taddr);
 	~Acceptor();
 	void listen();
+	bool listening()const { return listening_ == true; }
 	// called by tcpserver
 	void setNewConnectionCallback(NewConnectCallback cb){ newConncb_ = cb; }
 

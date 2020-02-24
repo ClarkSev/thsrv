@@ -41,13 +41,14 @@ removed_(0)   // create it and set vaild state
 Channel::~Channel()
 {
 	assert(ev_ == kNoneEvent);
-	if(removed_)   loop_->removeChannel(this);
+	if(!removed_)   loop_->removeChannel(this);
 }
 void Channel::remove()
 {
+	assert(removed_ == 0);
 	assert(ev_ == kNoneEvent);
 	loop_->removeChannel(this);
-	removed_ = 0;
+	removed_ = 1;
 }
 void Channel::handleEvent()
 {

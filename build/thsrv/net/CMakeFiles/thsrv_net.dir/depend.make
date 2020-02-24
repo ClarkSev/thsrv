@@ -79,6 +79,39 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Poller.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/EventLoop.cpp
 
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Atomic.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Condition.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/CurrentThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/LogStream.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Logger.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Mutex.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/QueueThreadSafe.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/StringPiece.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Thread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/TimeStamp.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/copyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoopThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoopThread.cpp
+
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Atomic.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Condition.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/CurrentThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/LogStream.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Logger.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Mutex.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/QueueThreadSafe.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/StringPiece.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Thread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/TimeStamp.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/copyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThreadPool.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThreadPool.cpp
+
 thsrv/net/CMakeFiles/thsrv_net.dir/InetAddress.cpp.o: ../thsrv/base/StringPiece.h
 thsrv/net/CMakeFiles/thsrv_net.dir/InetAddress.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/InetAddress.cpp.o: ../thsrv/net/InetAddress.cpp
@@ -171,6 +204,8 @@ thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Buffer.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/EventLoopThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/EventLoopThreadPool.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Poller.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Socket.h

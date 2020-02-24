@@ -19,6 +19,8 @@ test/tcpserver_test/CMakeFiles/tcpserver_test.dir/tcpserver_test.cpp.o
  ..//thsrv/net/Callback.h
  ..//thsrv/net/Channel.h
  ..//thsrv/net/EventLoop.h
+ ..//thsrv/net/EventLoopThread.h
+ ..//thsrv/net/EventLoopThreadPool.h
  ..//thsrv/net/InetAddress.h
  ..//thsrv/net/Poller.h
  ..//thsrv/net/Socket.h

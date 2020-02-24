@@ -58,7 +58,7 @@ name_(tnm),
 localaddr_(tlocaladdr),
 peeraddr_(tpeeraddr),
 socket_(new Socket(tfd)),
-channel_(new Channel(loop, tfd)),
+channel_(new Channel(loop_, tfd)),
 state_(kConnecting),
 conncb_(defaultConnectionCallback),
 msgcb_(defaultOnMessageCallback)
@@ -121,7 +121,7 @@ void TcpConnection::onConnection()
 }
 void TcpConnection::closeConnection()
 {
-	loop_->assertInLoopThread();
+	loop_->assertInLoopThread();	
 	assert(state_ == kDisconnected);
 	if(conncb_)  conncb_(shared_from_this());
 	channel_->remove();
@@ -199,14 +199,14 @@ void TcpConnection::sendInLoop(const void* data,const size_t tlen)
 	size_t remainBytes = tlen;
 	if(!channel_->isWritting() && msgbuf_.writable() == 0){
 		// directly send to peer-socket
-		LOG_INFO<<"TcpConnection::sendInLoop directly send to peer-socket.";
+		// LOG_INFO<<"TcpConnection::sendInLoop directly send to peer-socket.";
 		ssize_t len = socket_->send(data, tlen);
 		remainBytes = tlen - len;
 		if(remainBytes == 0) return;
 	}
 	assert(remainBytes > 0);
 	// push the data into outbuffer.
-	LOG_INFO<<"TcpConnection::sendInLoop push data into buffer.";
+	// LOG_INFO<<"TcpConnection::sendInLoop push data into buffer.";
 	msgbuf_.appendInWtBuf(static_cast<const char*>(data), remainBytes);
 	if(!channel_->isWritting()){  
 		channel_->enableWrite();

@@ -1,0 +1,2 @@
+add_executable(eventloopthread_test eventloopthread_test.cpp)
+target_link_libraries(eventloopthread_test thsrv_net)

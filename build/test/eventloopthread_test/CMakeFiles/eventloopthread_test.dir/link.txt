@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -Wall -Wextra -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic  -rdynamic CMakeFiles/eventloopthread_test.dir/eventloopthread_test.cpp.o  -o ../../eventloopthread_test ../../lib/libthsrv_net.a ../../lib/libthsrv_base.a -lrt -lpthread 

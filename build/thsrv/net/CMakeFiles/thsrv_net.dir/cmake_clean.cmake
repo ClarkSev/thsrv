@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/thsrv_net.dir/Channel.cpp.o"
   "CMakeFiles/thsrv_net.dir/Connector.cpp.o"
   "CMakeFiles/thsrv_net.dir/EventLoop.cpp.o"
+  "CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o"
+  "CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o"
   "CMakeFiles/thsrv_net.dir/InetAddress.cpp.o"
   "CMakeFiles/thsrv_net.dir/Poller.cpp.o"
   "CMakeFiles/thsrv_net.dir/Socket.cpp.o"

@@ -73,6 +73,7 @@ void Connector::resetConnectChannelInLoop()
 {
     loop_->assertInLoopThread();
     connectChannel_->disableAll();
+    LOG_INFO<<"resetConnectChannel";
     connectChannel_->remove();
 }
 void Connector::startInLoop()
@@ -92,8 +93,9 @@ void Connector::restartInLoop()
     state_ = kConnecting;
     // sockfd 由 TcpConnection中的 Socket 接管
     // 而Socket会自动关闭 sockfd，无需用户控制
-    // 重设connectChannel
-    resetConnectChannelInLoop();
+    // 同时 fd 已经交由newConncb_（TcpConenction设置）处理，
+    // 所以connectChannel实际上已经无效了
+    LOG_INFO<<"restartInLoop";   
     startInLoop();
     state_ = kConnected;
     start_ = true;

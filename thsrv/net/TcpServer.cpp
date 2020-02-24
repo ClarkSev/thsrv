@@ -3,6 +3,7 @@
 * @Date:	2020-2-16
 * @Author:	T.H.
 * @Note:	功能说明：
+	baseLoop 只用于接收与分配任务，而实际的任务执行，使用线程池中的EventLoop实现
 * @Version:	V0.1
 ****************************************************************************/
 
@@ -38,25 +39,29 @@ using namespace std::placeholders;
 /// START CLASS
 
 TcpServer::TcpServer(EventLoop* loop,const std::string& tnm,const InetAddress& taddr):\
-loop_(loop),
+baseLoop_(loop),
 name_(tnm),
 acceptor_(new Acceptor(loop, taddr)),
-poller_(new Poller(loop))
+poller_(new Poller(loop)),
+loopPool_(new EventLoopThreadPool(loop, kInitNumEventLoopThreads, tnm + std::string("EventThreads")) )
 {
+	assert(baseLoop_ != NULL);
 	acceptor_->setNewConnectionCallback(std::bind(&TcpServer::newConnect, this, _1, _2));
 }
 
 void TcpServer::start()
 {
-	loop_->runInLoop(std::bind(&Acceptor::listen, acceptor_.get() ));
+	assert(!acceptor_->listening());
+	loopPool_->startPool();
+	baseLoop_->runInLoop(std::bind(&Acceptor::listen, std::ref(acceptor_)) );
 }
 
 /// private method and interface
 void TcpServer::newConnect(int tfd,const InetAddress& peeraddr)
 {
 	// create new TcpConnection
-	loop_->assertInLoopThread();
-	
+	baseLoop_->assertInLoopThread();
+
 	char buf[32]={0};
 	snprintf(buf, sizeof(buf), "#%u", tfd);
 	std::string newConnName = name_ + std::string(buf);
@@ -66,30 +71,29 @@ void TcpServer::newConnect(int tfd,const InetAddress& peeraddr)
 	// LOG_DEBUG<<" localaddr = "<<localaddr.toIpAndPort()<<" -- peeraddr = "<<peeraddr.toIpAndPort();
 	
 	// create TcpConnection guard by shared_ptr
-	TcpConnectionPtr conn(new TcpConnection(loop_, newConnName, tfd, localaddr, peeraddr));  
+	EventLoop* ioLoop = loopPool_->getNextLoop();
+	TcpConnectionPtr conn(new TcpConnection(ioLoop, newConnName, tfd, localaddr, peeraddr));  
 	connects_[newConnName] = conn;
 	conn->setConnectionCallback(conncb_);
 	conn->setOnMessageCallback(msgcb_);
 	conn->setWriteCompleteCallback(writeCompletecb_);
 	conn->setCloseCallback(std::bind(&TcpServer::removeConnection, this, _1));
-	loop_->runInLoop(std::bind(&TcpConnection::onConnection, conn.get()));   // FIXME: set loop_
+	ioLoop->queueInLoop(std::bind(&TcpConnection::onConnection, conn) );
 }
 
 void TcpServer::removeConnection(const TcpConnectionPtr& conn)
 {
-	loop_->runInLoop(std::bind(&TcpServer::removeConnectionInLoop, this, conn));
+	baseLoop_->runInLoop(std::bind(&TcpServer::removeConnectionInLoop, this, conn));
 }
 void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn)
 {
-	loop_->assertInLoopThread();
+	baseLoop_->assertInLoopThread();
 
 	LOG_INFO<<"From "<<conn->getPeerAddr().toIpAndPort()<<"["<<name_<<"] remove connection "\
 			<<conn->getLocalAddr().toIpAndPort()<<"["<<conn->getName()<<"]";
-
 	EventLoop* ioLoop = conn->getThisLoop();
 	connects_.erase(conn->getName());
-	// conn->closeConnection();
-	ioLoop->runInLoop(std::bind(&TcpConnection::closeConnection, conn.get()));
+	ioLoop->queueInLoop(std::bind(&TcpConnection::closeConnection, conn) );
 }
 
 /// END CLASS

@@ -68,6 +68,9 @@ void procData(EchoClient* client)
     LOG_INFO<<"Please input something to Transform.";
     cin>>str;
     client->send(str);
+    if(str == "reconnect"){
+        client->reconnect();
+    }
 }
 void EchoClient::onConnection(const TcpConnectionPtr& conn)
 {
@@ -118,8 +121,7 @@ int main()
     t1.start(); t2.start();
     sleep(5);
     LOG_INFO<<"main func";
-    g_client->reconnect();
+    // g_client->reconnect();
     return 0;
 }
-
 

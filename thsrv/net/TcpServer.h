@@ -17,10 +17,11 @@
 //c++ library header
 //related others' project file header
 #include "thsrv/base/noncopyable.h"
+#include "thsrv/net/Callback.h"
 #include "thsrv/net/InetAddress.h"
 #include "thsrv/net/Acceptor.h"
 #include "thsrv/net/Poller.h"
-#include "thsrv/net/Callback.h"
+#include "thsrv/net/EventLoopThreadPool.h"
 
 #include <functional>
 #include <string>
@@ -39,10 +40,11 @@ class TcpServer : public noncopyable
 {
 public: // public properity
 	typedef std::map<std::string,TcpConnectionPtr>ConnectMap;
-	
+	const int kInitNumEventLoopThreads = 10;  // 默认事件线程池的线程数为10
 public:  // public method
 	TcpServer(EventLoop* loop, const std::string& tnm,const InetAddress& peeraddr);
 	void start();
+	// void setNumThread(const int numArg){  }
 	void setConnectionCallback(const ConnectionCallback& cb){ conncb_ = cb; }
 	void setOnMessageCallback(const MessageCallback& cb){ msgcb_ = cb; }
 	void setWriteCompleteCallback(const WriteCompleteCallback& cb){ writeCompletecb_ = cb; }
@@ -53,12 +55,12 @@ private:  // private method
 	void removeConnectionInLoop(const TcpConnectionPtr& conn);
 	
 private:  // private properity
-	EventLoop* loop_;
+	EventLoop* baseLoop_;
 	const std::string name_;
 	std::unique_ptr<Acceptor> acceptor_;
 	std::unique_ptr<Poller> poller_;
 	ConnectMap connects_;
-	
+	std::unique_ptr<EventLoopThreadPool>loopPool_;
 	// callback function
 	ConnectionCallback conncb_;
 	MessageCallback msgcb_;

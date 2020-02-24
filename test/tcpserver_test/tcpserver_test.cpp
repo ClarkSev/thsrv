@@ -73,17 +73,17 @@ public:
 	}
 	void onConnection(const TcpConnectionPtr& conn)
 	{
-		LOG_INFO<<" connection.";
+		LOG_INFO<<"connection.";
 	}
 	void onMessage(const TcpConnectionPtr& conn,Buffer& buf,const size_t tlen)
 	{
 		std::string data = buf.getReadBufferToString();
-		LOG_INFO<<" recv data:"<<data;
+		LOG_INFO<<"recv data:"<<data;
 		conn->send(data);
 	}
 	void writeComplete(const TcpConnectionPtr& conn)
-	{
-		LOG_INFO<<" writeComplete.";
+	{		
+		LOG_INFO<<"writeComplete.";
 	}
 	void start()
 	{

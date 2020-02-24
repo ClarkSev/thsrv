@@ -4,6 +4,8 @@ set(NET_SRC
 	Channel.cpp
 	Connector.cpp
 	EventLoop.cpp
+	EventLoopThread.cpp
+	EventLoopThreadPool.cpp
 	InetAddress.cpp
 	Poller.cpp
 	Socket.cpp

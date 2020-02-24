@@ -71,7 +71,7 @@ void EventLoop::start()
 }
 void EventLoop::stop()
 {
-	assertInLoopThread();
+	// assertInLoopThread();
 	running_ = false;
 }
 bool EventLoop::started()const
@@ -113,6 +113,7 @@ void EventLoop::queueInLoop(TASK t_task)
 }
 void EventLoop::removeChannel(Channel* channel)
 {
+	LOG_INFO<<"EventLoop::removeChannel";
 	assertInLoopThread();
 	poller_->removeChannel(channel);
 }
