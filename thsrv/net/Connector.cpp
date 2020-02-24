@@ -73,7 +73,6 @@ void Connector::resetConnectChannelInLoop()
 {
     loop_->assertInLoopThread();
     connectChannel_->disableAll();
-    LOG_INFO<<"resetConnectChannel";
     connectChannel_->remove();
 }
 void Connector::startInLoop()
@@ -95,7 +94,6 @@ void Connector::restartInLoop()
     // 而Socket会自动关闭 sockfd，无需用户控制
     // 同时 fd 已经交由newConncb_（TcpConenction设置）处理，
     // 所以connectChannel实际上已经无效了
-    LOG_INFO<<"restartInLoop";   
     startInLoop();
     state_ = kConnected;
     start_ = true;
@@ -111,7 +109,7 @@ void Connector::try_connect(const int tfd)
     state_ = kConnecting;
     int ret = socketops::connect(tfd, serverAddr_.getSockAddr());
     int saveErr = ret == 0? 0 : errno;
-    LOG_INFO<<"Connector::try_connect saveErr = "<<strerror(saveErr);
+    // LOG_INFO<<"Connector::try_connect saveErr = "<<strerror(saveErr);
     switch(saveErr){
         case 0:
         case EISCONN:

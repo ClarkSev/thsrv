@@ -74,8 +74,12 @@ void TcpClient::newConnection(int tfd,const InetAddress& serverAddr)
     char buf[32] = {0};
     snprintf(buf, sizeof(buf), "Client#%u", tfd);
     LOG_INFO<<"Create newConnection:"<<buf;
-    
+
     InetAddress localAddr(socketops::getLocalAddr(tfd));
+
+    // LOG_INFO<<"TcpServer::newConnect localaddr = "<<localAddr.toIpAndPort()
+	// 		<<" --> serveraddr = "<<serverAddr.toIpAndPort();
+
     conn_.reset(new TcpConnection(loop_, std::string(buf), tfd, localAddr, serverAddr));
     conn_->setConnectionCallback(conncb_);
     conn_->setOnMessageCallback(msgcb_);

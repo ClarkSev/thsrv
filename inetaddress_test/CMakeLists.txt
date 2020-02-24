@@ -1,2 +1,0 @@
-add_executable(inetaddress_test inetaddress_test.cpp)
-target_link_libraries(inetaddress_test thsrv_net)

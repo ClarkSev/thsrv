@@ -45,7 +45,7 @@ public:  // public method
 	bool listening()const { return listening_ == true; }
 	// called by tcpserver
 	void setNewConnectionCallback(NewConnectCallback cb){ newConncb_ = cb; }
-
+	int fd()const{ return sockfd_.fd(); }
 private:  // private method
 	void handleRead();
 private:  // private properity	

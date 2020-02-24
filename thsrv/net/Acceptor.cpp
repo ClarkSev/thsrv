@@ -31,7 +31,6 @@ acceptChannel_(tloop, sockfd_.fd())
 {
 	assert(sockfd_.fd()>=0);
 	sockfd_.bind(taddr);
-	// LOG_INFO<<" Acceptor ctor. addr = "<<taddr.toIpAndPort();
 	acceptChannel_.setReadCallback(std::bind(&Acceptor::handleRead, this));
 }
 Acceptor::~Acceptor()

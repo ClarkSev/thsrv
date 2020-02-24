@@ -70,13 +70,13 @@ void Poller::updateChannel(Channel* channel)
 	int lfd = channel->fd();
 	switch(state){
 		case kNewFd:
-			LOG_INFO<<"updateChannel kNewFd.";
+			// LOG_INFO<<"updateChannel kNewFd.";
 			assert(channels_.find(lfd)==channels_.end());  //channel-map didn't exist the channel
 			channels_[lfd] = channel;
 			updateEpollEvent(EPOLL_CTL_ADD, channel);
 			channel->set_fd_state(kAddedFd);break;
 		case kAddedFd:
-			LOG_INFO<<"updateChannel kAddedFd.";
+			// LOG_INFO<<"updateChannel kAddedFd.";
 			assert(channels_[lfd] == channel);
 			if(channel->isNoneEvents()){
 				updateEpollEvent(EPOLL_CTL_DEL, channel);
@@ -85,7 +85,7 @@ void Poller::updateChannel(Channel* channel)
 				updateEpollEvent(EPOLL_CTL_MOD, channel);
 			}break;
 		case kDeletedFd:
-			LOG_INFO<<"updateChannel kDeletedFd.";
+			// LOG_INFO<<"updateChannel kDeletedFd.";
 			assert(channels_[lfd] == channel);
 			updateEpollEvent(EPOLL_CTL_ADD, channel);
 			channel->set_fd_state(kAddedFd); break;   // for re-use it
@@ -96,7 +96,7 @@ void Poller::updateChannel(Channel* channel)
 void Poller::removeChannel(Channel* channel)
 {
 	int lfd = channel->fd();
-	LOG_INFO<<"Poller::removeChannel: fd = "<<lfd;
+	// LOG_INFO<<"Poller::removeChannel: fd = "<<lfd;
 	assert(channel->isNoneEvents());
 	assert(channels_[lfd] == channel);
 	assert(channels_.erase(lfd) == 1);   // earse by key, remove from channel-map
@@ -122,9 +122,9 @@ void Poller::updateEpollEvent(int ops, Channel* tchannel)
 	bzero(&levt, sizeof(levt));
 	levt.data.ptr = static_cast<void*>(tchannel);
 	levt.events = tchannel->events();
-	LOG_INFO<<"Poller::updateEpollEvent fd = "<<lfd\
-			<<", ops = "<<operateToStr(ops)\
-			<<", evts = "<<tchannel->eventToString(levt.events);
+	// LOG_INFO<<"Poller::updateEpollEvent fd = "<<lfd
+	// 		<<", ops = "<<operateToStr(ops)
+	// 		<<", evts = "<<tchannel->eventToString(levt.events);
 	if(::epoll_ctl(epollfd_, ops, lfd, &levt)<0){
 		LOG_WARN<<"::epoll_ctl ERROR: "<<strerror(errno)<<" fd = "<<lfd<<" ops = "<<operateToStr(ops);
 	}

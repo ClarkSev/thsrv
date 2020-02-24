@@ -52,7 +52,7 @@ void Channel::remove()
 }
 void Channel::handleEvent()
 {
-	LOG_INFO<<"Channel::handleEvent revents = "<< eventToString(rev_);
+	// LOG_INFO<<"Channel::handleEvent revents = "<< eventToString(rev_);
 	if(rev_& kEventPollIn){
 		if(readcb_) readcb_();
 	}else if(rev_ & kEventPollOut){

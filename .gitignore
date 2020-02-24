@@ -6,6 +6,10 @@
 *.lo
 *.o
 *.obj
+*.cpp.o
+*.make
+*.marks
+*.cmake
 
 # Precompiled Headers
 *.gch

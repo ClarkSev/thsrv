@@ -5,6 +5,8 @@
 * @Note:	功能说明：将socket进行封装，外部使用时不需要进行错误检查
 	注：没有考虑兼容问题，默认库支持 accept4
 	目前只支持 IPv4
+	accept 传递参数时，一定要初始化参数，否则可能出现 Invalid argument，是否
+	正常运行全凭运气。
 * @Version:	V0.1
 ****************************************************************************/
 
@@ -75,7 +77,7 @@ const struct sockaddr_in6* sockaddr_in6_cast(const struct sockaddr* taddr)
 /// 基本操作函数
 int createSocketNonBlock(sa_family_t taf)
 {
-	int fd = ::socket(taf,SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC,0);
+	int fd = ::socket(taf, SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC, 0);
 	if(fd < 0){
 		LOG_FATAL<<"ERROR:"<<strerror(errno);
 	}
@@ -87,7 +89,7 @@ int createSocketNonBlock(sa_family_t taf)
 void setReuseSocket(const int tfd)
 {
 	int opt;
-	if(::setsockopt(tfd,SOL_SOCKET,SO_REUSEADDR,&opt,sizeof(opt))<0){
+	if(::setsockopt(tfd, SOL_SOCKET, SO_REUSEADDR,&opt,sizeof(opt))<0){
 		LOG_FATAL<<"ERROR:"<<strerror(errno);
 	}
 }
@@ -169,6 +171,7 @@ int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen)
 }
 int connect(int tsockfd, const struct sockaddr* taddr)
 {
+	// be careful the value of length
 	return ::connect(tsockfd, taddr, static_cast<socklen_t>(sizeof(struct sockaddr)));
 }
 void close(int tsockfd)
@@ -185,31 +188,25 @@ void shutdownWrite(int tsockfd)
 }
 InetAddress getLocalAddr(const int tfd)
 {
-	struct sockaddr localaddr;   // FIXME: ipv6
-	bzero(&localaddr, sizeof localaddr);
-	socklen_t tlen = 0;
-	int ret = ::getsockname(tfd, &localaddr, &tlen);
+	struct sockaddr_in localaddr;   // FIXME: ipv6
+	bzero(&localaddr, sizeof(localaddr));  // must be initialized
+	socklen_t tlen = static_cast<socklen_t>(sizeof(localaddr)); // be careful the value
+	int ret = ::getsockname(tfd, socketops::sockaddr_cast(&localaddr), &tlen);
 	if(ret<0){
 		LOG_ERR<<" ERROR:"<<strerror(errno); return InetAddress(0);
 	}
-	struct sockaddr_in *addr4 = socketops::sockaddr_in_cast(&localaddr);
-	// LOG_INFO<<"getLocalAddr = "<<inet_ntoa(addr4->sin_addr)<<" : "
-			// <<ntohs(addr4->sin_port);
-	return InetAddress(*addr4);
+	return InetAddress(localaddr);
 }
 InetAddress getPeerAddr(const int tfd)
 {
-	struct sockaddr peeraddr;  // FIXME: ipv6
-	bzero(&peeraddr, sizeof peeraddr);
-	socklen_t tlen = 0;  //socketops::sockaddr_cast
-	int ret = ::getpeername(tfd, &peeraddr, &tlen);
+	struct sockaddr_in peeraddr;  // FIXME: ipv6
+	bzero(&peeraddr, sizeof(peeraddr));  // must be initialized
+	socklen_t tlen = static_cast<socklen_t>(sizeof(peeraddr));  // must be careful the value
+	int ret = ::getpeername(tfd, socketops::sockaddr_cast(&peeraddr), &tlen);
 	if(ret<0){
 		LOG_ERR<<" ERROR: "<<strerror(errno); return InetAddress(0);
 	}
-	struct sockaddr_in *addr4 = socketops::sockaddr_in_cast(&peeraddr);
-	// LOG_INFO<<"getPeerAddr = "<<inet_ntoa(addr4->sin_addr)<<" : "
-			// <<ntohs(addr4->sin_port);
-	return InetAddress(*addr4);
+	return InetAddress(peeraddr);
 }
 
 
@@ -244,14 +241,12 @@ ssize_t Socket::send(const void* tbuf,size_t tlen)
 }
 int Socket::accept(InetAddress *peeraddr)
 {
-	struct sockaddr laddr;  // FIXME: ipv6
+	struct sockaddr_in laddr;  // FIXME: ipv6
 	bzero(&laddr, sizeof(laddr));
-	socklen_t tlen;
-	int lfd = socketops::accept(sockfd_, &laddr, &tlen);
+	socklen_t tlen = static_cast<socklen_t>(sizeof(laddr));  // be careful the value
+	int lfd = socketops::accept(sockfd_, socketops::sockaddr_cast(&laddr), &tlen);
 	if(lfd>0){
-		struct sockaddr_in6 *addr6 = socketops::sockaddr_in6_cast(&laddr);
-		peeraddr->setSockAddr6(*addr6); 
-		addr6 = NULL;   // set the null-pointer
+		peeraddr->setSockAddr4(laddr); 
 	}
 	return lfd;
 }

@@ -68,8 +68,9 @@ void TcpServer::newConnect(int tfd,const InetAddress& peeraddr)
 	LOG_INFO<<"newconn: "<<peeraddr.toIpAndPort()<<"["<<newConnName<<"]";
 	
 	InetAddress localaddr(socketops::getLocalAddr(tfd));
-	// LOG_DEBUG<<" localaddr = "<<localaddr.toIpAndPort()<<" -- peeraddr = "<<peeraddr.toIpAndPort();
-	
+	LOG_INFO<<"TcpServer::newConnect serverAddr = "<<localaddr.toIpAndPort()\
+			<<" <--> ClientAddr = "<<peeraddr.toIpAndPort();
+
 	// create TcpConnection guard by shared_ptr
 	EventLoop* ioLoop = loopPool_->getNextLoop();
 	TcpConnectionPtr conn(new TcpConnection(ioLoop, newConnName, tfd, localaddr, peeraddr));  
