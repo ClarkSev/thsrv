@@ -89,7 +89,21 @@ inline TimeStamp timeDifference(const TimeStamp high, const TimeStamp low)
 	int64_t timeDist = high.microSecondSinceEpoch() - low.microSecondSinceEpoch();
 	return TimeStamp(timeDist);	
 }
-	
+
+/*
+    struct timespec {
+        time_t tv_sec;                // Seconds 
+        long   tv_nsec;               // Nanoseconds 十亿分之一秒
+    }
+*/
+inline struct timespec timeToSpec(const TimeStamp& ths)
+{
+	struct timespec ret;
+	ret.tv_sec = static_cast<time_t>(ths.microSecondSinceEpoch() / TimeStamp::kNumMicroSecondPerSecond);
+	ret.tv_nsec = static_cast<long>(ths.microSecondSinceEpoch() % TimeStamp::kNumMicroSecondPerSecond)*1000;
+	return ret;
+}
+
 // }  //END BASE NAMESPACE
 	
 }  //END THSRV NAMESPACE

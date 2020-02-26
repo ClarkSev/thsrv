@@ -47,6 +47,7 @@ events_(kInitSzEvents)
 TimeStamp Poller::poll(int timeout, ChannelList* activeChannel)
 {
 	TimeStamp tm(TimeStamp::now());
+	
 	int nfds = ::epoll_wait(epollfd_, \
 	&*events_.begin(),\
 	static_cast<int>(events_.size()),

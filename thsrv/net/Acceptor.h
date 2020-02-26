@@ -52,6 +52,7 @@ private:  // private properity
 	EventLoop* loop_;
 	bool listening_;
 	Socket sockfd_;
+	int idlefd_;  // 用于处理文件描述符达上限错误
 	Channel acceptChannel_;
 	NewConnectCallback newConncb_;
 	

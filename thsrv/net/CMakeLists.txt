@@ -12,6 +12,8 @@ set(NET_SRC
 	TcpClient.cpp
 	TcpConnection.cpp
 	TcpServer.cpp
+	Timer.cpp
+	TimerId.cpp
 )
 file(GLOB HEADERS "*.h")
 

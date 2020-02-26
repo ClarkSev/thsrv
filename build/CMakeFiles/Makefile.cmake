@@ -12,8 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeSystem.cmake"
   "../test/CMakeLists.txt"
-  "../test/tcpclient_test/CMakeLists.txt"
-  "../test/tcpserver_test/CMakeLists.txt"
+  "../test/timer_test/CMakeLists.txt"
   "../thsrv/base/CMakeLists.txt"
   "../thsrv/net/CMakeLists.txt"
   "/usr/share/cmake-3.10/Modules/CMakeCInformation.cmake"
@@ -47,14 +46,12 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "thsrv/base/CMakeFiles/CMakeDirectoryInformation.cmake"
   "thsrv/net/CMakeFiles/CMakeDirectoryInformation.cmake"
   "test/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/tcpserver_test/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/tcpclient_test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "test/timer_test/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "thsrv/base/CMakeFiles/thsrv_base.dir/DependInfo.cmake"
   "thsrv/net/CMakeFiles/thsrv_net.dir/DependInfo.cmake"
-  "test/tcpserver_test/CMakeFiles/tcpserver_test.dir/DependInfo.cmake"
-  "test/tcpclient_test/CMakeFiles/tcpclient_test.dir/DependInfo.cmake"
+  "test/timer_test/CMakeFiles/timer_test.dir/DependInfo.cmake"
   )

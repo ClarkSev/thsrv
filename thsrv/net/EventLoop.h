@@ -43,10 +43,10 @@ public: // method
 	EventLoop();
 	~EventLoop();
 	
-	void start();
-	void stop();
-	bool started()const;
-	bool stoped()const;
+	void start();  // just only start in itself thread
+	void stop();   // can stop in any thread
+	bool started()const;  // any thread
+	bool stoped()const;   // any thread
 	void runInLoop(TASK t_task);
 	void runAfter(double delay_ms, TASK t_task);
 	void runEvery(TASK t_task);
@@ -61,7 +61,7 @@ private: // properity
 	bool running_;
 	const pid_t currentId_;
 	std::unique_ptr<Poller> poller_;
-	base::MutexLock mx_;
+	mutable base::MutexLock mx_;
 	base::Condition readyCond_;
 	ChannelList activeChannels_;
 	base::QueueThreadSafe<TASK> taskQue_;

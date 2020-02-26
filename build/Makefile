@@ -137,30 +137,17 @@ thsrv_net/fast:
 .PHONY : thsrv_net/fast
 
 #=============================================================================
-# Target rules for targets named tcpserver_test
+# Target rules for targets named timer_test
 
 # Build rule for target.
-tcpserver_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tcpserver_test
-.PHONY : tcpserver_test
+timer_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 timer_test
+.PHONY : timer_test
 
 # fast build rule for target.
-tcpserver_test/fast:
-	$(MAKE) -f test/tcpserver_test/CMakeFiles/tcpserver_test.dir/build.make test/tcpserver_test/CMakeFiles/tcpserver_test.dir/build
-.PHONY : tcpserver_test/fast
-
-#=============================================================================
-# Target rules for targets named tcpclient_test
-
-# Build rule for target.
-tcpclient_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tcpclient_test
-.PHONY : tcpclient_test
-
-# fast build rule for target.
-tcpclient_test/fast:
-	$(MAKE) -f test/tcpclient_test/CMakeFiles/tcpclient_test.dir/build.make test/tcpclient_test/CMakeFiles/tcpclient_test.dir/build
-.PHONY : tcpclient_test/fast
+timer_test/fast:
+	$(MAKE) -f test/timer_test/CMakeFiles/timer_test.dir/build.make test/timer_test/CMakeFiles/timer_test.dir/build
+.PHONY : timer_test/fast
 
 # Help Target
 help:
@@ -172,8 +159,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... thsrv_base"
 	@echo "... thsrv_net"
-	@echo "... tcpserver_test"
-	@echo "... tcpclient_test"
+	@echo "... timer_test"
 .PHONY : help
 
 

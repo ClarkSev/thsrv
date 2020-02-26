@@ -146,9 +146,9 @@ int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen)
 		  case EINTR:
 		  case EPROTO: // ???
 		  case EPERM:
-		  case EMFILE: // per-process lmit of open file desctiptor ???
+		  case EMFILE: // 当文件描述符达上限时需要进行处理，事先准备一个idleFd
 			// expected errors
-			errno = savedErr;
+			ret = savedErr;  // 将错误代码传出
 			LOG_WARN << " ignore error of ::accept " << strerror(savedErr);
 			break;
 		  case EBADF:
@@ -245,7 +245,7 @@ int Socket::accept(InetAddress *peeraddr)
 	bzero(&laddr, sizeof(laddr));
 	socklen_t tlen = static_cast<socklen_t>(sizeof(laddr));  // be careful the value
 	int lfd = socketops::accept(sockfd_, socketops::sockaddr_cast(&laddr), &tlen);
-	if(lfd>0){
+	if(lfd >= 0){
 		peeraddr->setSockAddr4(laddr); 
 	}
 	return lfd;

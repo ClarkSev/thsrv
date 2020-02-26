@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/thsrv_net.dir/TcpClient.cpp.o"
   "CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o"
   "CMakeFiles/thsrv_net.dir/TcpServer.cpp.o"
+  "CMakeFiles/thsrv_net.dir/Timer.cpp.o"
+  "CMakeFiles/thsrv_net.dir/TimerId.cpp.o"
   "../../lib/libthsrv_net.pdb"
   "../../lib/libthsrv_net.a"
 )

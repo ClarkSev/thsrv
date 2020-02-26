@@ -213,3 +213,30 @@ thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpConnection.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpServer.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpServer.cpp
 
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Atomic.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Condition.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/CurrentThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/LogStream.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Logger.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Mutex.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/QueueThreadSafe.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/StringPiece.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Thread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/TimeStamp.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/copyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Channel.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Timer.cpp
+
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/LogStream.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/Logger.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/StringPiece.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/TimeStamp.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/copyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/net/TimerId.cpp
+

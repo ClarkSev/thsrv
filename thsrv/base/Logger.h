@@ -27,6 +27,13 @@
 
 namespace thsrv
 {
+
+/// public defined
+#if !defined MCHECK
+#define MCHECK(ret) ({ __typeof__ (ret) errnum = (ret);         \
+                       assert(errnum == 0); errnum;})
+#endif // MCHECK
+
 /// 用于分离文件名与路径
 class SourceFile
 {

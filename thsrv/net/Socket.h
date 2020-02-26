@@ -21,9 +21,7 @@
 #include <sys/uio.h>
 #include <sys/socket.h>
 
-/// public defined
-#define MCHECK(ret) ({ __typeof__ (ret) errnum = (ret);         \
-                       assert(errnum == 0); (void) errnum;})
+
 
 namespace thsrv
 {

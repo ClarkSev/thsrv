@@ -8,9 +8,6 @@
 /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/net/CMakeFiles/edit_cache.dir
 /home/hong/codedir/sharedfile/thsrvfm/build/test/CMakeFiles/rebuild_cache.dir
 /home/hong/codedir/sharedfile/thsrvfm/build/test/CMakeFiles/edit_cache.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpserver_test/CMakeFiles/rebuild_cache.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpserver_test/CMakeFiles/tcpserver_test.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpserver_test/CMakeFiles/edit_cache.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpclient_test/CMakeFiles/rebuild_cache.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpclient_test/CMakeFiles/tcpclient_test.dir
-/home/hong/codedir/sharedfile/thsrvfm/build/test/tcpclient_test/CMakeFiles/edit_cache.dir
+/home/hong/codedir/sharedfile/thsrvfm/build/test/timer_test/CMakeFiles/rebuild_cache.dir
+/home/hong/codedir/sharedfile/thsrvfm/build/test/timer_test/CMakeFiles/timer_test.dir
+/home/hong/codedir/sharedfile/thsrvfm/build/test/timer_test/CMakeFiles/edit_cache.dir

@@ -71,15 +71,17 @@ void EventLoop::start()
 }
 void EventLoop::stop()
 {
-	// assertInLoopThread();
+	base::MutexLockGuard _l(mx_);
 	running_ = false;
 }
 bool EventLoop::started()const
 {
+	base::MutexLockGuard _l(mx_);
 	return running_;
 }
 bool EventLoop::stoped()const
 {
+	base::MutexLockGuard _l(mx_);
 	return (!running_);
 }
 void EventLoop::runInLoop(TASK t_task)

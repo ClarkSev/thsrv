@@ -12,9 +12,14 @@
 //c++ library header
 //related others' project file header
 #include "thsrv/net/Acceptor.h"
+#include "thsrv/base/Logger.h"
 #include "thsrv/net/EventLoop.h"
 
+#include <fcntl.h>
+#include <sys/stat.h>
 #include <assert.h>
+#include <error.h>
+#include <string.h>
 
 namespace thsrv
 {
@@ -27,6 +32,7 @@ Acceptor::Acceptor(EventLoop* tloop,const InetAddress& taddr):\
 loop_(tloop),
 listening_(false),
 sockfd_(taddr),
+idlefd_(::open("/dev/null", O_RDONLY | O_CLOEXEC)),
 acceptChannel_(tloop, sockfd_.fd())
 {
 	assert(sockfd_.fd()>=0);
@@ -51,11 +57,24 @@ void Acceptor::handleRead()
 	assert(listening_);
 	InetAddress peeraddr;
 	int connfd = sockfd_.accept(&peeraddr);
-	if(newConncb_){
-		newConncb_(connfd, peeraddr);
-	}else{ 
-		socketops::close(connfd);
+	if(connfd >= 0){
+		if(newConncb_){
+			newConncb_(connfd, peeraddr);
+		}else{ 
+			socketops::close(connfd);
+		}
+	}else{
+		LOG_ERR<<"ERROR:"<<strerror(connfd);
+		if(connfd == EMFILE){
+			::close(idlefd_);
+			idlefd_ = sockfd_.accept(&peeraddr);
+			::close(idlefd_);
+			idlefd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC); // reset idlefd_
+		}else{
+			LOG_FATAL<<"other ERROR";
+		}
 	}
+
 }
 
 /// END CLASS

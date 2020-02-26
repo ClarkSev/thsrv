@@ -47,7 +47,9 @@ void Condition::wait()
 bool Condition::waitForSecond(double tsec)
 {
 	struct timespec abstime;
-	clock_gettime(CLOCK_REALTIME, &abstime);  // get abstime
+	// CLOCK_REALTIME -- get abstime will be affect by the pc time
+	// CLOCK_MONOTONIC - won't
+	clock_gettime(CLOCK_REALTIME, &abstime);  
 	const int64_t kNumNanoSecondPerSecond = 1000000000;
 	int64_t addtimeNanoSecond = static_cast<int64_t>(tsec * kNumNanoSecondPerSecond);
 	abstime.tv_sec += static_cast<time_t>((addtimeNanoSecond + abstime.tv_nsec) / kNumNanoSecondPerSecond);

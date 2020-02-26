@@ -476,6 +476,60 @@ TcpServer.cpp.s:
 	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.s
 .PHONY : TcpServer.cpp.s
 
+Timer.o: Timer.cpp.o
+
+.PHONY : Timer.o
+
+# target to build an object file
+Timer.cpp.o:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o
+.PHONY : Timer.cpp.o
+
+Timer.i: Timer.cpp.i
+
+.PHONY : Timer.i
+
+# target to preprocess a source file
+Timer.cpp.i:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.i
+.PHONY : Timer.cpp.i
+
+Timer.s: Timer.cpp.s
+
+.PHONY : Timer.s
+
+# target to generate assembly for a file
+Timer.cpp.s:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.s
+.PHONY : Timer.cpp.s
+
+TimerId.o: TimerId.cpp.o
+
+.PHONY : TimerId.o
+
+# target to build an object file
+TimerId.cpp.o:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o
+.PHONY : TimerId.cpp.o
+
+TimerId.i: TimerId.cpp.i
+
+.PHONY : TimerId.i
+
+# target to preprocess a source file
+TimerId.cpp.i:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.i
+.PHONY : TimerId.cpp.i
+
+TimerId.s: TimerId.cpp.s
+
+.PHONY : TimerId.s
+
+# target to generate assembly for a file
+TimerId.cpp.s:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.s
+.PHONY : TimerId.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -524,6 +578,12 @@ help:
 	@echo "... TcpServer.o"
 	@echo "... TcpServer.i"
 	@echo "... TcpServer.s"
+	@echo "... Timer.o"
+	@echo "... Timer.i"
+	@echo "... Timer.s"
+	@echo "... TimerId.o"
+	@echo "... TimerId.i"
+	@echo "... TimerId.s"
 .PHONY : help
 
 
