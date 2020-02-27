@@ -137,17 +137,17 @@ thsrv_net/fast:
 .PHONY : thsrv_net/fast
 
 #=============================================================================
-# Target rules for targets named timer_test
+# Target rules for targets named timerque_test
 
 # Build rule for target.
-timer_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 timer_test
-.PHONY : timer_test
+timerque_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 timerque_test
+.PHONY : timerque_test
 
 # fast build rule for target.
-timer_test/fast:
-	$(MAKE) -f test/timer_test/CMakeFiles/timer_test.dir/build.make test/timer_test/CMakeFiles/timer_test.dir/build
-.PHONY : timer_test/fast
+timerque_test/fast:
+	$(MAKE) -f test/timerque_test/CMakeFiles/timerque_test.dir/build.make test/timerque_test/CMakeFiles/timerque_test.dir/build
+.PHONY : timerque_test/fast
 
 # Help Target
 help:
@@ -159,7 +159,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... thsrv_base"
 	@echo "... thsrv_net"
-	@echo "... timer_test"
+	@echo "... timerque_test"
 .PHONY : help
 
 

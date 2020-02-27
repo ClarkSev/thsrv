@@ -60,8 +60,8 @@ private:   // private method and interface
     int deliveryPowerInLoop();   
     void resetConnectChannelInLoop();
 private:   // private properity
-    const int kMaxDelayMillSecond = 30000;  // 最长重试间隔时间 30s
-    const int kInitDelayMillSecond = 500;   // 重试的间隔  500ms
+    const double kMaxDelaySecond  = 30;  // 最长重试间隔时间 30s
+    const double kInitDelaySecond = 0.5;   // 重试的间隔  500ms
 
     EventLoop* loop_;
     bool start_;

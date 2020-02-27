@@ -150,9 +150,9 @@ void Connector::retry(const int tfd)
     assert(state_ == kConnecting);
     static int numRetry = 1;
     LOG_INFO<<"Retry to connect the "<<tfd<<" "<<numRetry<<"th";
-    double delay_ms = std::min(kInitDelayMillSecond * 2, kMaxDelayMillSecond);
+    double delay_sec = std::min(kInitDelaySecond * 2, kMaxDelaySecond);
     numRetry++;
-    if(delay_ms >= static_cast<double>(kMaxDelayMillSecond)){
+    if(delay_sec >= static_cast<double>(kMaxDelaySecond)){
         socketops::close(tfd);
         LOG_INFO<<"Close the socket["<<tfd<<"]";
         loop_->queueInLoop(
@@ -161,7 +161,7 @@ void Connector::retry(const int tfd)
         numRetry = 1;
     }else{
         loop_->runAfter(
-            delay_ms,
+            delay_sec,
             std::bind(&Connector::try_connect, this, tfd)
         );
     }

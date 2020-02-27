@@ -1,0 +1,2 @@
+add_executable(timerque_test timerque_test.cpp)
+target_link_libraries(timerque_test thsrv_net)

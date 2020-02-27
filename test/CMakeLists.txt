@@ -9,6 +9,7 @@
 # add_subdirectory(tcpserver_test)
 # add_subdirectory(tcpclient_test)
 # add_subdirectory(eventloopthread_test)
-add_subdirectory(timer_test)
+# add_subdirectory(timer_my_test)
+add_subdirectory(timerque_test)
 
 

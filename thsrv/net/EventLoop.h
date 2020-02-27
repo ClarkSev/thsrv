@@ -19,6 +19,8 @@
 #include "thsrv/base/Mutex.h"
 #include "thsrv/base/Condition.h"
 #include "thsrv/base/QueueThreadSafe.h"
+#include "thsrv/net/Callback.h"
+#include "thsrv/net/TimerQueue.h"
 
 #include <functional>   // for function
 #include <vector>
@@ -48,8 +50,9 @@ public: // method
 	bool started()const;  // any thread
 	bool stoped()const;   // any thread
 	void runInLoop(TASK t_task);
-	void runAfter(double delay_ms, TASK t_task);
-	void runEvery(TASK t_task);
+	void runAfter(double delay_sec, const TimerCallback& t_task);
+	void runEvery(double delay_sec, const TimerCallback& t_task);
+	void runAt(const TimeStamp& when, const TimerCallback& t_task);
 	void queueInLoop(TASK t_task);
 	
 	void removeChannel(Channel* channel);
@@ -65,7 +68,7 @@ private: // properity
 	base::Condition readyCond_;
 	ChannelList activeChannels_;
 	base::QueueThreadSafe<TASK> taskQue_;
-	
+	std::unique_ptr<TimerQueue> timerQue_;
 };  //END EventLoop CLASS
 	
 }  //END NET NAMESPACE

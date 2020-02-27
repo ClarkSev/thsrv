@@ -34,7 +34,8 @@ EventLoop::EventLoop():\
 running_(false),
 currentId_(CurrentThread::tid()),
 poller_(new Poller(this)),
-readyCond_(mx_)
+readyCond_(mx_),
+timerQue_(new TimerQueue(this))
 {
 	if(l_eventLoopInThread){
 		LOG_FATAL<<" anthor EventLoop in thread.";
@@ -92,21 +93,21 @@ void EventLoop::runInLoop(TASK t_task)
 		queueInLoop(t_task);
 	}
 }
-void EventLoop::runAfter(double delay_ms, TASK t_task)
+void EventLoop::runAfter(double delay_sec,const TimerCallback& t_task)
 {
-	double sec = 0;
-	// {
-		base::MutexLockGuard _l(mx_);
-		sec = static_cast<double>(delay_ms / 1000);
-	// }
-	if(readyCond_.waitForSecond(sec)==true){   // FIXME: exsit miss events
-		queueInLoop(t_task);
-	}
+	TimeStamp when = addTime(TimeStamp::now(), delay_sec);
+	timerQue_->addTimer(when, t_task);
 	LOG_INFO<<"quit EventLoop::runAfter.";
 }
-void EventLoop::runEvery(TASK t_task)
+void EventLoop::runEvery(double delay_sec, const TimerCallback& t_task)
 {
-
+	TimeStamp when = addTime(TimeStamp::now(), delay_sec);
+	timerQue_->addTimer(when, t_task, delay_sec);
+	LOG_INFO<<"quit EventLoop::runEvery.";
+}
+void EventLoop::runAt(const TimeStamp& when,const TimerCallback& t_task)
+{
+	timerQue_->addTimer(when, t_task);
 }
 void EventLoop::queueInLoop(TASK t_task)
 {

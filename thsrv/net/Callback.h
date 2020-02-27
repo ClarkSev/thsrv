@@ -33,7 +33,10 @@ typedef std::function<void(const TcpConnectionPtr&)>ConnectionCallback;
 typedef std::function<void(const TcpConnectionPtr&, Buffer&,const size_t)>MessageCallback;
 typedef ConnectionCallback  CloseCallback;
 typedef ConnectionCallback  WriteCompleteCallback;
-	
+
+typedef std::function<void()>TASK;
+typedef TASK  TimerCallback;
+
 }  //END NET NAMESPACE
 	
 }  //END THSRV NAMESPACE

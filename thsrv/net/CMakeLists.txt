@@ -13,7 +13,7 @@ set(NET_SRC
 	TcpConnection.cpp
 	TcpServer.cpp
 	Timer.cpp
-	TimerId.cpp
+	TimerQueue.cpp
 )
 file(GLOB HEADERS "*.h")
 

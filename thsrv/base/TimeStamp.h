@@ -40,6 +40,7 @@ public:
 	static TimeStamp now();    // 因为类中只含常规数据类型（整型），
 							   // 所以引用和原对象的区别不明显
 	static TimeStamp invaild() { return TimeStamp(0); }
+	bool vaild()const{ return kMicroSecondSinceEpoch_ != 0; }
 	//FIXME: Using string or stringpiece(ctor. by self)
 	std::string toString()const;    
 	std::string toStringFmt(bool enShowUs=true)const;    // enShowUs--显示精度是否为s以上

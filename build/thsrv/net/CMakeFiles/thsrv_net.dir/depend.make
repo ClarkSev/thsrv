@@ -14,10 +14,14 @@ thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/base/noncopyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Acceptor.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Socket.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Acceptor.cpp.o: ../thsrv/net/Acceptor.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/Buffer.cpp.o: ../thsrv/base/StringPiece.h
@@ -39,8 +43,12 @@ thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Channel.cpp.o: ../thsrv/net/Channel.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/base/Atomic.h
@@ -55,11 +63,15 @@ thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Connector.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Socket.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Connector.cpp.o: ../thsrv/net/Connector.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/Atomic.h
@@ -74,9 +86,13 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Poller.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/EventLoop.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Atomic.h
@@ -91,8 +107,13 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/Callback.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoopThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThread.cpp.o: ../thsrv/net/EventLoopThread.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Atomic.h
@@ -107,9 +128,14 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/Thre
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/Callback.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThreadPool.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoopThreadPool.cpp.o: ../thsrv/net/EventLoopThreadPool.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/InetAddress.cpp.o: ../thsrv/base/StringPiece.h
@@ -128,9 +154,13 @@ thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/Poller.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Poller.cpp.o: ../thsrv/net/Poller.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/Socket.cpp.o: ../thsrv/base/LogStream.h
@@ -164,6 +194,9 @@ thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/Socket.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/TcpClient.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/TcpConnection.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpClient.cpp.o: ../thsrv/net/TcpClient.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/base/Atomic.h
@@ -185,6 +218,9 @@ thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/Socket.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/TcpConnection.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpConnection.cpp.o: ../thsrv/net/TcpConnection.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/base/Atomic.h
@@ -211,6 +247,9 @@ thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Poller.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Socket.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpConnection.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpServer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/TcpServer.cpp.o: ../thsrv/net/TcpServer.cpp
 
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Atomic.h
@@ -225,18 +264,31 @@ thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/Thread.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/TimeStamp.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/copyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/EventLoop.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Timer.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/TimerQueue.h
 thsrv/net/CMakeFiles/thsrv_net.dir/Timer.cpp.o: ../thsrv/net/Timer.cpp
 
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/LogStream.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/Logger.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/StringPiece.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/TimeStamp.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/copyable.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/base/noncopyable.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/net/TimerId.h
-thsrv/net/CMakeFiles/thsrv_net.dir/TimerId.cpp.o: ../thsrv/net/TimerId.cpp
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/Atomic.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/Condition.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/CurrentThread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/LogStream.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/Logger.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/Mutex.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/QueueThreadSafe.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/StringPiece.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/Thread.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/TimeStamp.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/copyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/base/noncopyable.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/Callback.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/Channel.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/Timer.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/TimerId.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/TimerQueue.h
+thsrv/net/CMakeFiles/thsrv_net.dir/TimerQueue.cpp.o: ../thsrv/net/TimerQueue.cpp
 

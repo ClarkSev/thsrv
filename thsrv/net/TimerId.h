@@ -1,8 +1,8 @@
 /****************************************************************************
 * @File:	TimerId封装类
-* @Date:	2020-2-25
+* @Date:	2020-2-26
 * @Author:	T.H.
-* @Note:	使用timerfd_create产生 fd 将其封装为 TimerId，该类自动管理生存期
+* @Note:	该类为Timer的ID标识，用于快速定位Timer，同时这是唯一的
 * @Version:	V0.1
 ****************************************************************************/
 #pragma once
@@ -17,15 +17,6 @@
 //related others' project file header
 #include "thsrv/base/Logger.h"
 
-#include <sys/timerfd.h>
-
-/*
-	int timerfd_create(int clockid, int flags);
-    int timerfd_settime(int fd, int flags,
-                            const struct itimerspec *new_value,
-                            struct itimerspec *old_value);
-    int timerfd_gettime(int fd, struct itimerspec *curr_value);
-*/
 
 namespace thsrv
 {
@@ -33,15 +24,20 @@ namespace thsrv
 namespace net
 {
 	
+class Timer;
+
 class TimerId
 {
 public:
     // TimerId(const int fd);
-    TimerId();
-    ~TimerId();
-    int fd()const{ return fd_; }
+    TimerId(Timer* timerArg, uint64_t idArg):\
+            timer_(timerArg),id_(idArg){}
+    TimerId():timer_(NULL),id_(0){}
+    uint64_t id()const { return id_;}
+    Timer* timer(){ return timer_; }
 private:
-    const int fd_;
+    Timer* timer_;
+    uint64_t id_;
 
 };  //END TimerId CLASS
 	
