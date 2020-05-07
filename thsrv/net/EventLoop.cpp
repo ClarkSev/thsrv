@@ -96,14 +96,16 @@ void EventLoop::runInLoop(TASK t_task)
 void EventLoop::runAfter(double delay_sec,const TimerCallback& t_task)
 {
 	TimeStamp when = addTime(TimeStamp::now(), delay_sec);
-	timerQue_->addTimer(when, t_task);
-	LOG_INFO<<"quit EventLoop::runAfter.";
+	runAt(when, t_task);
+	// timerQue_->addTimer(when, t_task);
+	// LOG_INFO<<"quit EventLoop::runAfter.";
 }
 void EventLoop::runEvery(double delay_sec, const TimerCallback& t_task)
 {
 	TimeStamp when = addTime(TimeStamp::now(), delay_sec);
-	timerQue_->addTimer(when, t_task, delay_sec);
-	LOG_INFO<<"quit EventLoop::runEvery.";
+	runAt(when, t_task, delay_sec);
+	// timerQue_->addTimer(when, t_task, delay_sec);
+	// LOG_INFO<<"quit EventLoop::runEvery.";
 }
 void EventLoop::runAt(const TimeStamp& when,const TimerCallback& t_task)
 {
