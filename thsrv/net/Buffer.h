@@ -2,11 +2,9 @@
 * @File:	buffer class
 * @Date:	2020-2-17
 * @Author:	T.H.
-* @Note:	Ê¹ÓÃvectorÊµÏÖbuffer£¬¸ÃÀàÊÇ×Ö·û´æ´¢buffer£¬Ö÷ÒªÓÃÓÚÍøÂç´«Êä
-	Ê±µÄÊı¾İ»º´æ£»
-	rdbuf_ ±íÊ¾Ïòsocket¶ÁÈ¡Êı¾İµÄ»º´æÆ÷£¬wtbuf_ Ïòsocket·¢ËÍÊı¾İµÄ»º´æÆ÷
-	
-	×¢£ºÊ¹ÓÃÄ¬ÈÏµÄ¸´ÖÆ¹¹Ôìº¯Êı£¬¸Ãº¯ÊıÖ÷ÒªÊÇÄÚ²¿vectorµÄcopy£¬ÊÇÉî¿½±´
+* @Note:	è¯¥ç±»é‡‡ç”¨åŒç¼“å­˜æœºåˆ¶å®ç°ï¼Œä¸”ä½¿ç”¨vectorä½œä¸ºå­˜å‚¨å®¹å™¨ï¼Œå®ç°å¯æ ¹æ®éœ€æ±‚è¿›è¡Œ
+	æ‰©å±•ï¼›å…¶ä¸­rdbufè¡¨ç¤ºç”¨æˆ·ä»socketæ¥æ”¶åˆ°çš„æ•°æ®å­˜æ”¾çš„bufferï¼Œwtbufè¡¨ç¤ºç”¨æˆ·å‘socket
+	å‘é€çš„æ•°æ®bufferï¼›åœ¨å†…éƒ¨shellä¼šè‡ªåŠ¨ä»wtbufä¸­å–å‡ºä¸€å®šé‡çš„æ•°æ®ï¼Œå¹¶å‘é€ç»™socketï¼›
 * @Version:	V0.1
 ****************************************************************************/
 #pragma once
@@ -60,29 +58,41 @@ public:
 	size_t appendable_wtbuf() const{ return wtbuf_.size() - bufWritebytes_; }
 	
 	
-	/// Òì²½Ğ´Èësocket
+	/// æœ¬åœ°å‘socketå‘é€æ•°æ®ï¼Œç­‰å¾…shellå°†æ•°æ®å‘é€å‡ºå»
 	void appendInWtBuf(const char* buf, size_t tlen);
 	void appendInWtBuf(const std::string& tstr);
-	// ÖÕ¶ËÏò»º´æÆ÷ÖĞË÷È¡Êı¾İ
+	// shellä»bufferä¸­è·å–éœ€è¦å‘é€çš„æ•°æ®
 	void retrieveFromWtBuf(size_t tlen);
 	void retrieveAllFromWtBuf();
 	std::string retrieveToStringFromWtBuf(size_t tlen);
 	std::string retrieveAllToStringFromWtBuf();
 	
-	/// Òì²½¶ÁÈ¡socket
+	/// ä»socketä¸­è¯»å–æ•°æ®
 	ssize_t readFd(const int tfd, int* saveErrno);  // return the length of data
-	// ¶ÁÈ¡´Ósocket½ÓÊÕµ½µÄÊı¾İ
+	// shellä»bufferä¸­è¯»å–æ¥æ”¶åˆ°çš„æ•°æ®
 	size_t getReadBuffer(char* buf, size_t tlen=0);
 	std::string getReadBufferToString();
+
+	// ä»rdbufä¸­æŸ¥æ‰¾CRLFï¼Œå¹¶è¿”å›ç›¸åº”çš„åœ°å€----- for httpParse
+	const char* findCRLFReadBuf();
+	const char* findCRLFReadBuf(const char* start);
+	std::string getlineReadBuf();
+	std::string getlineReadBuf(const char* start);
+
 	void appendInRdBuf(const char* buf, size_t tlen)
 	{
 		if(tlen >= appendable_rdbuf()){
 			makeSpaceRdBuf();
 		}
 		rdbuf_.assign(buf, buf+tlen);
+		bufReadbytes_ += tlen;
 	}
 	
 	char* beginWriteInBuf()
+	{
+		return &*wtbuf_.begin() + bufWritebytes_;
+	}
+	const char* beginWriteInBuf()const
 	{
 		return &*wtbuf_.begin() + bufWritebytes_;
 	}
@@ -90,11 +100,23 @@ public:
 	{
 		return &*rdbuf_.begin() + bufReadbytes_;
 	}
+	const char* beginReadInBuf()const
+	{
+		return &*rdbuf_.begin() + bufReadbytes_;
+	}
 	char* beginWriteOutBuf()
 	{
 		return &*wtbuf_.begin() + shWritebytes_;
 	}
+	const char* beginWriteOutBuf()const
+	{
+		return &*wtbuf_.begin() + shWritebytes_;
+	}
 	char* beginReadOutBuf()
+	{
+		return &*rdbuf_.begin() + shReadbytes_;
+	}
+	const char* beginReadOutBuf()const
 	{
 		return &*rdbuf_.begin() + shReadbytes_;
 	}
@@ -111,14 +133,16 @@ private:  // private method
 		wtbuf_.resize(lszbuf*2);
 	}
 private:
-	// ÖÕ¶ËÒÑ¶ÁÊı¾İ
+	// shellå¯ä»rdbufä¸­è·å–çš„å­—èŠ‚
 	size_t shReadbytes_;
-	// ÖÕ¶ËÒÑÌáÈ¡Êı¾İ
+	// shellå¯ä»wtbufä¸­è·å–çš„å­—èŠ‚
 	size_t shWritebytes_;
 	// buffer
 	size_t bufReadbytes_;
 	size_t bufWritebytes_;
 	
+	static const char kCRLF[];
+
 	std::vector<char>rdbuf_;
 	std::vector<char>wtbuf_;
 	

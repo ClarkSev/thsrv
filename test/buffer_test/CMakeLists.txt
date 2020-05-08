@@ -1,0 +1,2 @@
+add_executable(buffer_test buffer_test.cpp)
+target_link_libraries(buffer_test thsrv_net thsrv_base pthread)

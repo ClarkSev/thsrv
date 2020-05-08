@@ -14,6 +14,10 @@
 #include "thsrv/net/Buffer.h"
 #include "thsrv/net/Socket.h"
 
+#include <assert.h>
+
+#include <algorithm>
+
 namespace thsrv
 {
 
@@ -21,6 +25,8 @@ namespace net
 {
 
 /// START CLASS
+
+const char Buffer::kCRLF[] = "\r\n";
 
 /// 异步写入socket
 void Buffer::appendInWtBuf(const char* buf, size_t tlen)
@@ -106,6 +112,40 @@ std::string Buffer::getReadBufferToString()
 	bufReadbytes_ = 0;
 	shReadbytes_ = 0;
 	return tstr;
+}
+
+// 从rdbuf中查找CRLF，并返回相应的地址----- for httpParse
+const char* Buffer::findCRLFReadBuf()
+{
+	return findCRLFReadBuf(beginReadOutBuf());
+}
+const char* Buffer::findCRLFReadBuf(const char* start)
+{
+	const char* end = beginReadInBuf();
+	assert(start<=end);
+	const char* crlf = std::search(start, end, kCRLF, kCRLF+2);
+	return crlf==end ? nullptr : crlf;
+}
+// 该函数包含 更新shReadBytes_
+std::string Buffer::getlineReadBuf()
+{
+	return getlineReadBuf(beginReadOutBuf());
+}
+std::string Buffer::getlineReadBuf(const char* start)
+{
+	const char* end = beginReadInBuf();
+	assert(start<=end);
+	if(start==end) return "";
+	const char* crlf = findCRLFReadBuf(start);
+
+	if(!crlf) {
+		return "";
+	}else {
+		// update the shReadBytes_
+		size_t len = crlf - beginReadOutBuf();
+		shReadbytes_ += len + 2;
+		return std::string(start, crlf);
+	}
 }
 
 /// END CLASS
