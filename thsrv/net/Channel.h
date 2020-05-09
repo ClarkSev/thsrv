@@ -33,7 +33,7 @@ class Channel
 {
 public:  // public properity
 	typedef std::function<void()> EventCallback;
-	typedef std::function<void()> ReadCallback;
+	typedef std::function<void(TimeStamp)> ReadCallback;
 	
 public:
 	Channel(EventLoop* loop, int fd);
@@ -58,7 +58,7 @@ public:
 	void set_fd_state(const int state){ fd_state_ = state; }
 	void set_revent(const int tev){ rev_ = tev; }
 	
-	void handleEvent();
+	void handleEvent(TimeStamp receiveTime);
 	void setReadCallback(ReadCallback cb){ readcb_ = cb; }
 	void setWriteCallback(EventCallback cb){ writecb_ = cb; }
 	void setCloseCallback(EventCallback cb){ closecb_ = cb;}

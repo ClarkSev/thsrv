@@ -15,6 +15,7 @@
 //c library header
 //c++ library header
 //related others' project file header
+#include "thsrv/base/TimeStamp.h"
 
 #include <functional>
 #include <memory>
@@ -30,7 +31,7 @@ class TcpConnection;
 
 typedef std::shared_ptr<TcpConnection>TcpConnectionPtr;
 typedef std::function<void(const TcpConnectionPtr&)>ConnectionCallback;
-typedef std::function<void(const TcpConnectionPtr&, Buffer&,const size_t)>MessageCallback;
+typedef std::function<void(const TcpConnectionPtr&, Buffer&, TimeStamp)>MessageCallback;
 typedef ConnectionCallback  CloseCallback;
 typedef ConnectionCallback  WriteCompleteCallback;
 

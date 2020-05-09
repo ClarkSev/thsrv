@@ -76,17 +76,18 @@ public:  // public method
 	
 	void onConnection();
 	void closeConnection();
-
+	void shutdown();
 	void set_conn_state(conn_state_t state){ state_ = state; }  // FIXME: not thread-safe
 	
 private:  // private method
 	/// handle events
-	void handleRead();
+	void handleRead(TimeStamp receiveTime);
 	void handleWrite();
 	void handleClose();
 	void handleError();
 
 	void shutdownInLoop();
+	void closeConnectionInLoop();
 	void sendInLoop(const void* data,const size_t tlen);
 	void enableReadInLoop();
 	void disableReadInLoop();

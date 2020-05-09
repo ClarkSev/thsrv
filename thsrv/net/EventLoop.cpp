@@ -57,9 +57,9 @@ void EventLoop::start()
 		// handle i/o thread
 		activeChannels_.clear();
 		// LOG_INFO<<"After clear EventLoop::start activeChannels_.size"<<activeChannels_.size();
-		poller_->poll(timeout, &activeChannels_);
+		TimeStamp pollReturnTime = poller_->poll(timeout, &activeChannels_);
 		for(auto lchannel : activeChannels_){
-			lchannel->handleEvent();
+			lchannel->handleEvent(pollReturnTime);
 		}
 		// handle others task
 		base::QueueThreadSafe<TASK> l_task;

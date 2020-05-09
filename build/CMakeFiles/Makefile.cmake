@@ -12,9 +12,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.10.2/CMakeSystem.cmake"
   "../test/CMakeLists.txt"
-  "../test/buffer_test/CMakeLists.txt"
+  "../test/http_test/CMakeLists.txt"
   "../thsrv/base/CMakeLists.txt"
   "../thsrv/net/CMakeLists.txt"
+  "../thsrv/net/http/CMakeLists.txt"
   "/usr/share/cmake-3.10/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCommonLanguageInclude.cmake"
@@ -45,13 +46,15 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "thsrv/base/CMakeFiles/CMakeDirectoryInformation.cmake"
   "thsrv/net/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "thsrv/net/http/CMakeFiles/CMakeDirectoryInformation.cmake"
   "test/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "test/buffer_test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "test/http_test/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "thsrv/base/CMakeFiles/thsrv_base.dir/DependInfo.cmake"
   "thsrv/net/CMakeFiles/thsrv_net.dir/DependInfo.cmake"
-  "test/buffer_test/CMakeFiles/buffer_test.dir/DependInfo.cmake"
+  "thsrv/net/http/CMakeFiles/httpserver.dir/DependInfo.cmake"
+  "test/http_test/CMakeFiles/httpserver_test.dir/DependInfo.cmake"
   )

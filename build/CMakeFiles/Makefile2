@@ -84,7 +84,7 @@ thsrv/base/preinstall:
 thsrv/base/CMakeFiles/thsrv_base.dir/all:
 	$(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/depend
 	$(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=3,4,5,6,7,8,9 "Built target thsrv_base"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target thsrv_base"
 .PHONY : thsrv/base/CMakeFiles/thsrv_base.dir/all
 
 # Include target in all.
@@ -119,16 +119,18 @@ clean: thsrv/base/CMakeFiles/thsrv_base.dir/clean
 
 # Convenience name for "all" pass in the directory.
 thsrv/net/all: thsrv/net/CMakeFiles/thsrv_net.dir/all
+thsrv/net/all: thsrv/net/http/all
 
 .PHONY : thsrv/net/all
 
 # Convenience name for "clean" pass in the directory.
 thsrv/net/clean: thsrv/net/CMakeFiles/thsrv_net.dir/clean
+thsrv/net/clean: thsrv/net/http/clean
 
 .PHONY : thsrv/net/clean
 
 # Convenience name for "preinstall" pass in the directory.
-thsrv/net/preinstall:
+thsrv/net/preinstall: thsrv/net/http/preinstall
 
 .PHONY : thsrv/net/preinstall
 
@@ -139,7 +141,7 @@ thsrv/net/preinstall:
 thsrv/net/CMakeFiles/thsrv_net.dir/all: thsrv/base/CMakeFiles/thsrv_base.dir/all
 	$(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/depend
 	$(MAKE) -f thsrv/net/CMakeFiles/thsrv_net.dir/build.make thsrv/net/CMakeFiles/thsrv_net.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25 "Built target thsrv_net"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29 "Built target thsrv_net"
 .PHONY : thsrv/net/CMakeFiles/thsrv_net.dir/all
 
 # Include target in all.
@@ -170,76 +172,133 @@ clean: thsrv/net/CMakeFiles/thsrv_net.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory test
+# Directory level rules for directory thsrv/net/http
 
 # Convenience name for "all" pass in the directory.
-test/all: test/buffer_test/all
+thsrv/net/http/all: thsrv/net/http/CMakeFiles/httpserver.dir/all
 
-.PHONY : test/all
-
-# Convenience name for "clean" pass in the directory.
-test/clean: test/buffer_test/clean
-
-.PHONY : test/clean
-
-# Convenience name for "preinstall" pass in the directory.
-test/preinstall: test/buffer_test/preinstall
-
-.PHONY : test/preinstall
-
-#=============================================================================
-# Directory level rules for directory test/buffer_test
-
-# Convenience name for "all" pass in the directory.
-test/buffer_test/all: test/buffer_test/CMakeFiles/buffer_test.dir/all
-
-.PHONY : test/buffer_test/all
+.PHONY : thsrv/net/http/all
 
 # Convenience name for "clean" pass in the directory.
-test/buffer_test/clean: test/buffer_test/CMakeFiles/buffer_test.dir/clean
+thsrv/net/http/clean: thsrv/net/http/CMakeFiles/httpserver.dir/clean
 
-.PHONY : test/buffer_test/clean
+.PHONY : thsrv/net/http/clean
 
 # Convenience name for "preinstall" pass in the directory.
-test/buffer_test/preinstall:
+thsrv/net/http/preinstall:
 
-.PHONY : test/buffer_test/preinstall
+.PHONY : thsrv/net/http/preinstall
 
 #=============================================================================
-# Target rules for target test/buffer_test/CMakeFiles/buffer_test.dir
+# Target rules for target thsrv/net/http/CMakeFiles/httpserver.dir
 
 # All Build rule for target.
-test/buffer_test/CMakeFiles/buffer_test.dir/all: thsrv/base/CMakeFiles/thsrv_base.dir/all
-test/buffer_test/CMakeFiles/buffer_test.dir/all: thsrv/net/CMakeFiles/thsrv_net.dir/all
-	$(MAKE) -f test/buffer_test/CMakeFiles/buffer_test.dir/build.make test/buffer_test/CMakeFiles/buffer_test.dir/depend
-	$(MAKE) -f test/buffer_test/CMakeFiles/buffer_test.dir/build.make test/buffer_test/CMakeFiles/buffer_test.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=1,2 "Built target buffer_test"
-.PHONY : test/buffer_test/CMakeFiles/buffer_test.dir/all
+thsrv/net/http/CMakeFiles/httpserver.dir/all: thsrv/base/CMakeFiles/thsrv_base.dir/all
+thsrv/net/http/CMakeFiles/httpserver.dir/all: thsrv/net/CMakeFiles/thsrv_net.dir/all
+	$(MAKE) -f thsrv/net/http/CMakeFiles/httpserver.dir/build.make thsrv/net/http/CMakeFiles/httpserver.dir/depend
+	$(MAKE) -f thsrv/net/http/CMakeFiles/httpserver.dir/build.make thsrv/net/http/CMakeFiles/httpserver.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=1,2,3,4 "Built target httpserver"
+.PHONY : thsrv/net/http/CMakeFiles/httpserver.dir/all
 
 # Include target in all.
-all: test/buffer_test/CMakeFiles/buffer_test.dir/all
+all: thsrv/net/http/CMakeFiles/httpserver.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-test/buffer_test/CMakeFiles/buffer_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles 25
-	$(MAKE) -f CMakeFiles/Makefile2 test/buffer_test/CMakeFiles/buffer_test.dir/all
+thsrv/net/http/CMakeFiles/httpserver.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles 27
+	$(MAKE) -f CMakeFiles/Makefile2 thsrv/net/http/CMakeFiles/httpserver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles 0
-.PHONY : test/buffer_test/CMakeFiles/buffer_test.dir/rule
+.PHONY : thsrv/net/http/CMakeFiles/httpserver.dir/rule
 
 # Convenience name for target.
-buffer_test: test/buffer_test/CMakeFiles/buffer_test.dir/rule
+httpserver: thsrv/net/http/CMakeFiles/httpserver.dir/rule
 
-.PHONY : buffer_test
-
-# clean rule for target.
-test/buffer_test/CMakeFiles/buffer_test.dir/clean:
-	$(MAKE) -f test/buffer_test/CMakeFiles/buffer_test.dir/build.make test/buffer_test/CMakeFiles/buffer_test.dir/clean
-.PHONY : test/buffer_test/CMakeFiles/buffer_test.dir/clean
+.PHONY : httpserver
 
 # clean rule for target.
-clean: test/buffer_test/CMakeFiles/buffer_test.dir/clean
+thsrv/net/http/CMakeFiles/httpserver.dir/clean:
+	$(MAKE) -f thsrv/net/http/CMakeFiles/httpserver.dir/build.make thsrv/net/http/CMakeFiles/httpserver.dir/clean
+.PHONY : thsrv/net/http/CMakeFiles/httpserver.dir/clean
+
+# clean rule for target.
+clean: thsrv/net/http/CMakeFiles/httpserver.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory test
+
+# Convenience name for "all" pass in the directory.
+test/all: test/http_test/all
+
+.PHONY : test/all
+
+# Convenience name for "clean" pass in the directory.
+test/clean: test/http_test/clean
+
+.PHONY : test/clean
+
+# Convenience name for "preinstall" pass in the directory.
+test/preinstall: test/http_test/preinstall
+
+.PHONY : test/preinstall
+
+#=============================================================================
+# Directory level rules for directory test/http_test
+
+# Convenience name for "all" pass in the directory.
+test/http_test/all: test/http_test/CMakeFiles/httpserver_test.dir/all
+
+.PHONY : test/http_test/all
+
+# Convenience name for "clean" pass in the directory.
+test/http_test/clean: test/http_test/CMakeFiles/httpserver_test.dir/clean
+
+.PHONY : test/http_test/clean
+
+# Convenience name for "preinstall" pass in the directory.
+test/http_test/preinstall:
+
+.PHONY : test/http_test/preinstall
+
+#=============================================================================
+# Target rules for target test/http_test/CMakeFiles/httpserver_test.dir
+
+# All Build rule for target.
+test/http_test/CMakeFiles/httpserver_test.dir/all: thsrv/base/CMakeFiles/thsrv_base.dir/all
+test/http_test/CMakeFiles/httpserver_test.dir/all: thsrv/net/CMakeFiles/thsrv_net.dir/all
+test/http_test/CMakeFiles/httpserver_test.dir/all: thsrv/net/http/CMakeFiles/httpserver.dir/all
+	$(MAKE) -f test/http_test/CMakeFiles/httpserver_test.dir/build.make test/http_test/CMakeFiles/httpserver_test.dir/depend
+	$(MAKE) -f test/http_test/CMakeFiles/httpserver_test.dir/build.make test/http_test/CMakeFiles/httpserver_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=5,6 "Built target httpserver_test"
+.PHONY : test/http_test/CMakeFiles/httpserver_test.dir/all
+
+# Include target in all.
+all: test/http_test/CMakeFiles/httpserver_test.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/http_test/CMakeFiles/httpserver_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles 29
+	$(MAKE) -f CMakeFiles/Makefile2 test/http_test/CMakeFiles/httpserver_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles 0
+.PHONY : test/http_test/CMakeFiles/httpserver_test.dir/rule
+
+# Convenience name for target.
+httpserver_test: test/http_test/CMakeFiles/httpserver_test.dir/rule
+
+.PHONY : httpserver_test
+
+# clean rule for target.
+test/http_test/CMakeFiles/httpserver_test.dir/clean:
+	$(MAKE) -f test/http_test/CMakeFiles/httpserver_test.dir/build.make test/http_test/CMakeFiles/httpserver_test.dir/clean
+.PHONY : test/http_test/CMakeFiles/httpserver_test.dir/clean
+
+# clean rule for target.
+clean: test/http_test/CMakeFiles/httpserver_test.dir/clean
 
 .PHONY : clean
 

@@ -35,3 +35,5 @@ file(GLOB HEADERS "*.h")
 
 add_library(thsrv_net ${NET_SRC})
 target_link_libraries(thsrv_net thsrv_base)
+
+add_subdirectory(http)

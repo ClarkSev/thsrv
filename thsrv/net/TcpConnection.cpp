@@ -40,13 +40,15 @@ void defaultConnectionCallback(const TcpConnectionPtr& conn)
 			<<conn->getLocalAddr().toIpAndPort()<<"["<<conn->getName()<<"] : "\
 			<<(conn->connected() ? "UP" : "DOWN");
 }
-void defaultOnMessageCallback(const TcpConnectionPtr& conn, Buffer& buf, const size_t len)
+void defaultOnMessageCallback(const TcpConnectionPtr& conn, Buffer& buf, TimeStamp receiveTime)
 {
 	LOG_INFO<<"Get "<< buf.getReadBufferToString().size() \
 			<<" bytes data from : "<<conn->getLocalAddr().toIpAndPort();
 }
 
 }   // END NAMESPACE
+
+using namespace std::placeholders;
 
 /// START CLASS
 //ctor.
@@ -64,7 +66,7 @@ conncb_(defaultConnectionCallback),
 msgcb_(defaultOnMessageCallback)
 {
 	// register the callback function
-	channel_->setReadCallback( std::bind(&TcpConnection::handleRead,  this));
+	channel_->setReadCallback( std::bind(&TcpConnection::handleRead,  this, _1));
 	channel_->setWriteCallback(std::bind(&TcpConnection::handleWrite, this));
 	channel_->setCloseCallback(std::bind(&TcpConnection::handleClose, this));
 	channel_->setErrorCallback(std::bind(&TcpConnection::handleError, this));
@@ -121,14 +123,21 @@ void TcpConnection::onConnection()
 }
 void TcpConnection::closeConnection()
 {
-	loop_->assertInLoopThread();	
-	assert(state_ == kDisconnected);
-	if(conncb_)  conncb_(shared_from_this());
-	channel_->remove();
-}
+	if(state_ == kDisconnecting || state_ == kConnected){
+		set_conn_state(kDisconnected);
+		loop_->queueInLoop(std::bind(&TcpConnection::closeConnectionInLoop, shared_from_this()));
+	}
 
+}
+void TcpConnection::shutdown()
+{
+	if(state_ == kConnected){
+		set_conn_state(kDisconnecting);
+		loop_->queueInLoop(std::bind(&TcpConnection::shutdownInLoop, shared_from_this()));
+	}
+}
 /// private method implementation
-void TcpConnection::handleRead()
+void TcpConnection::handleRead(TimeStamp receiveTime)
 {
 	// read fd and put the msg into buffer.
 	loop_->assertInLoopThread();
@@ -141,7 +150,7 @@ void TcpConnection::handleRead()
 		// LOG_INFO<<"TcpConnection::handleRead nrd==0";
 		handleClose();   // close TcpConnection
 	}else{
-		msgcb_(shared_from_this(), msgbuf_, static_cast<size_t>(nrd) );   
+		msgcb_(shared_from_this(), msgbuf_, receiveTime );   
 	}
 }
 void TcpConnection::handleWrite()   // shell handle it
@@ -171,11 +180,20 @@ void TcpConnection::handleWrite()   // shell handle it
 		}
 	}
 }
+
+void TcpConnection::closeConnectionInLoop()
+{
+	loop_->assertInLoopThread();
+	if(state_ == kDisconnecting || state_ == kConnected){
+		handleClose();
+	}
+}
 void TcpConnection::handleClose()
 {
 	loop_->assertInLoopThread();
 	channel_->disableAll();
 	state_ = kDisconnected;
+	if(conncb_) conncb_(shared_from_this());
 	closecb_(shared_from_this());  // 将this指针向用户暴露时，需要使用shared_from_this
 }
 void TcpConnection::handleError()

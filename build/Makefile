@@ -137,17 +137,30 @@ thsrv_net/fast:
 .PHONY : thsrv_net/fast
 
 #=============================================================================
-# Target rules for targets named buffer_test
+# Target rules for targets named httpserver
 
 # Build rule for target.
-buffer_test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 buffer_test
-.PHONY : buffer_test
+httpserver: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 httpserver
+.PHONY : httpserver
 
 # fast build rule for target.
-buffer_test/fast:
-	$(MAKE) -f test/buffer_test/CMakeFiles/buffer_test.dir/build.make test/buffer_test/CMakeFiles/buffer_test.dir/build
-.PHONY : buffer_test/fast
+httpserver/fast:
+	$(MAKE) -f thsrv/net/http/CMakeFiles/httpserver.dir/build.make thsrv/net/http/CMakeFiles/httpserver.dir/build
+.PHONY : httpserver/fast
+
+#=============================================================================
+# Target rules for targets named httpserver_test
+
+# Build rule for target.
+httpserver_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 httpserver_test
+.PHONY : httpserver_test
+
+# fast build rule for target.
+httpserver_test/fast:
+	$(MAKE) -f test/http_test/CMakeFiles/httpserver_test.dir/build.make test/http_test/CMakeFiles/httpserver_test.dir/build
+.PHONY : httpserver_test/fast
 
 # Help Target
 help:
@@ -159,7 +172,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... thsrv_base"
 	@echo "... thsrv_net"
-	@echo "... buffer_test"
+	@echo "... httpserver"
+	@echo "... httpserver_test"
 .PHONY : help
 
 

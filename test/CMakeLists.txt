@@ -11,6 +11,7 @@
 # add_subdirectory(eventloopthread_test)
 # add_subdirectory(timer_my_test)
 # add_subdirectory(timerque_test)
-add_subdirectory(buffer_test)
+# add_subdirectory(buffer_test)
+add_subdirectory(http_test)
 
 

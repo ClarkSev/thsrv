@@ -48,7 +48,7 @@ public:
     }
     // void started()const{ return start_ == true; }
     void onConnection(const TcpConnectionPtr& conn);
-    void onMessage(const TcpConnectionPtr& conn, Buffer& buf,const size_t tlen)
+    void onMessage(const TcpConnectionPtr& conn, Buffer& buf,TimeStamp receiveTime)
     {
         LOG_INFO<<"onMessage.";
         LOG_INFO<<"recv data = "<<buf.getReadBufferToString();

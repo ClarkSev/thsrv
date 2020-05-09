@@ -50,11 +50,11 @@ void Channel::remove()
 	loop_->removeChannel(this);
 	removed_ = 1;
 }
-void Channel::handleEvent()
+void Channel::handleEvent(TimeStamp receiveTime)
 {
 	// LOG_INFO<<"Channel::handleEvent revents = "<< eventToString(rev_);
 	if(rev_& kEventPollIn){
-		if(readcb_) readcb_();
+		if(readcb_) readcb_(receiveTime);
 	}else if(rev_ & kEventPollOut){
 		if(writecb_)  writecb_();
 	}else{

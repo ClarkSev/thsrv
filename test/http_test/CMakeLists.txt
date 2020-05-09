@@ -1,0 +1,2 @@
+add_executable(httpserver_test httpserver_test.cpp)
+target_link_libraries(httpserver_test httpserver thsrv_net thsrv_base pthread)

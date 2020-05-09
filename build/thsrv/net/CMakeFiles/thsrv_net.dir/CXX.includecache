@@ -137,6 +137,8 @@ string
 -
 
 ..//thsrv/net/Callback.h
+thsrv/base/TimeStamp.h
+../thsrv/net/thsrv/base/TimeStamp.h
 functional
 -
 memory

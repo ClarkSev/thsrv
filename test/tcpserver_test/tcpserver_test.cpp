@@ -75,7 +75,7 @@ public:
 	{
 		LOG_INFO<<"connection.";
 	}
-	void onMessage(const TcpConnectionPtr& conn,Buffer& buf,const size_t tlen)
+	void onMessage(const TcpConnectionPtr& conn,Buffer& buf,TimeStamp receiveTime)
 	{
 		std::string data = buf.getReadBufferToString();
 		LOG_INFO<<"recv data:"<<data;
