@@ -17,7 +17,7 @@
 	·经常出现传输混乱——测试程序问题（FIXED）
 	·reconnect存在问题
 
-3.EventLoop 待添加 runEvery
+3.EventLoop 待添加 runEvery(FIXED)
 
 4.线程安全待考证
 
@@ -29,6 +29,9 @@
 
 8.原TimerQueue设计时，真实的Timer组成，这样比较浪费 timerfd；
 	借鉴 muduo库的方法，设计一个Queue结构，该结构只有一个timerfd进行监控，这样虽然不能保证其及时处理，但是在权衡下是较优方案。
+
+9.添加 HTTP 解析器，并实现了简易的 Web服务器， 目前仅支持 HTTP/1.0 与 HTTP/1.1 协议，以及只解析了 GET POST HEAD 方法
+	目前浏览器能进行通信，但是似乎存在服务器断开连接后（可能没有真正的断开），浏览器仍然向服务器进行请求数据（一直在加载中）。
 
 主要难点：
 	1、Reactor + ThreadPool设计模型————使用Acceptor专用于接收请求，并使用ThreadPool分配任务；
