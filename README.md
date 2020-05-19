@@ -32,6 +32,7 @@
 
 9.添加 HTTP 解析器，并实现了简易的 Web服务器， 目前仅支持 HTTP/1.0 与 HTTP/1.1 协议，以及只解析了 GET POST HEAD 方法
 	目前浏览器能进行通信，但是似乎存在服务器断开连接后（可能没有真正的断开），浏览器仍然向服务器进行请求数据（一直在加载中）。
+FIXED: 因Content-Length属性没有添加
 
 主要难点：
 	1、Reactor + ThreadPool设计模型————使用Acceptor专用于接收请求，并使用ThreadPool分配任务；
