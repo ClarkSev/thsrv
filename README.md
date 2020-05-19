@@ -3,7 +3,7 @@
 
 项目说明：
 1.Server端
-	·server部分没有添加超时剔除客户的功能；
+	·server部分没有添加超时剔除客户的功能(FIXED: 基于应用层，应用层可以使用loop->runAfter(closeConnetion, delay)即可实现)
 	·地址转换仍然有问题:
 		使用getsockname 与 getpeername 时，指定的addrlen一定要对，可以指定为 sizeof(sockaddr_in)，否则返回的数据会是全0数据
 	·经常出现accept连接失败：
@@ -28,7 +28,7 @@
 7.连接出现错误的相关处理程序考虑不周
 
 8.原TimerQueue设计时，真实的Timer组成，这样比较浪费 timerfd；
-	借鉴 muduo库的方法，设计一个Queue结构，该结构只有一个timerfd进行监控，这样虽然不能保证其及时处理，但是在权衡下是较优方案。
+	借鉴 muduo库的方法，设计一个基于 超时时间的小顶堆 结构，该结构只有一个timerfd进行监控，这样虽然不能保证其及时处理，但是在权衡下是较优方案。
 
 9.添加 HTTP 解析器，并实现了简易的 Web服务器， 目前仅支持 HTTP/1.0 与 HTTP/1.1 协议，以及只解析了 GET POST HEAD 方法
 	目前浏览器能进行通信，但是似乎存在服务器断开连接后（可能没有真正的断开），浏览器仍然向服务器进行请求数据（一直在加载中）。

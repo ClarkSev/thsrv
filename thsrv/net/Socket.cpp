@@ -20,6 +20,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/tcp.h>
 #include <errno.h>
 #include <string.h>   // for strerror()
 
@@ -86,11 +87,26 @@ int createSocketNonBlock(sa_family_t taf)
 // void setKeepAlive(const int tfd)  // 设置心跳包
 // {
 // }
-void setReuseSocket(const int tfd)
+void setReuseSocket(const int tfd, const bool on)
 {
-	int opt;
-	if(::setsockopt(tfd, SOL_SOCKET, SO_REUSEADDR,&opt,sizeof(opt))<0){
+	int opt = on? 1 : 0;
+	if(::setsockopt(tfd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT,&opt,sizeof(opt))<0){
 		LOG_FATAL<<"ERROR:"<<strerror(errno);
+	}
+}
+// disable the Nagle algorithm
+void setTcpNoDelay(const int tfd, const bool on)
+{
+	int opt = on? 1: 0;
+	if(::setsockopt(tfd, IPPROTO_TCP, TCP_NODELAY, &opt, sizeof(opt))<0){
+		LOG_WARN<<"WARN:"<<strerror(errno);
+	}
+}
+void setKeepAlive(const int tfd, const bool on)
+{
+	int opt = on? 1: 0;
+	if(::setsockopt(tfd, SOL_SOCKET, SO_KEEPALIVE, &opt, sizeof(opt))<0){
+		LOG_WARN<<"WARN:"<<strerror(errno);
 	}
 }
 void bind(int tsockfd,const struct sockaddr* taddr)
@@ -217,7 +233,7 @@ Socket::Socket(const InetAddress& taddr):\
 sockfd_( socketops::createSocketNonBlock(taddr.getFamily()) )
 {
 	assert(sockfd_>=0);
-	socketops::setReuseSocket(sockfd_);
+	setReuse(true);
 }
 Socket::~Socket()
 {

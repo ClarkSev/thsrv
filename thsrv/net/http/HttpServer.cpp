@@ -51,13 +51,16 @@ httpcb_(detail::defaultHttpCallback)
 
 void HttpServer::onMessage(const TcpConnectionPtr& conn, Buffer& buf, TimeStamp receiveTime)
 {
-    HttpParse request(buf, receiveTime);
-    if(request.getError()){
+    HttpParse request;
+    if(request.parseRequest(buf, receiveTime)){
         // printf("The request Error!\n");
         conn->send("HTTP/1.1 400 Bad Request\r\n");
-        conn->closeConnection();
-    }else{
+        conn->shutdown();
+    }
+    if(request.gotAll())
+    {
         onRequest(conn, request);
+        request.reset();
     }
 }
 
@@ -72,10 +75,10 @@ void HttpServer::onRequest(const TcpConnectionPtr& conn,HttpParse& req)
     response.appendInBuffer(buf);
     conn->send(buf);
     if(response.getCloseConn()){
-        conn->closeConnection();
+        conn->shutdown();
     }else{
         ////////////// fixme: add expire time
-        // conn->closeConnection();
+        // conn->shutdown();
     }
 }
 

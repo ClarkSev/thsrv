@@ -70,12 +70,21 @@ msgcb_(defaultOnMessageCallback)
 	channel_->setWriteCallback(std::bind(&TcpConnection::handleWrite, this));
 	channel_->setCloseCallback(std::bind(&TcpConnection::handleClose, this));
 	channel_->setErrorCallback(std::bind(&TcpConnection::handleError, this));
+
+	socket_->setKeepAlive(true);
+	socket_->setTcpNoDelay(true);
 }
 TcpConnection::~TcpConnection()
 {
 	// shutdownConnection();
 	assert(state_ == kDisconnected);
 }
+
+void TcpConnection::setTcpNoDelay(const bool on)
+{
+	socket_->setTcpNoDelay(on);
+}
+
 void TcpConnection::enableRead()
 {
 	loop_->runInLoop(std::bind(

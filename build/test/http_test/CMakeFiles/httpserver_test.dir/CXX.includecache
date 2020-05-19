@@ -283,7 +283,7 @@ thsrv/base/TimeStamp.h
 ../thsrv/net/http/thsrv/base/TimeStamp.h
 string
 -
-unordered_map
+map
 -
 
 ..//thsrv/net/http/HttpResponse.h
@@ -291,7 +291,7 @@ thsrv/base/copyable.h
 ../thsrv/net/http/thsrv/base/copyable.h
 string
 -
-unordered_map
+map
 -
 
 ..//thsrv/net/http/HttpServer.h

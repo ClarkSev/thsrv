@@ -52,6 +52,8 @@ public:  // public method
 				   const InetAddress& localaddr, const InetAddress& peeraddr);
 	~TcpConnection();
 	
+	void setTcpNoDelay(const bool on);
+
 	// called by TcpServer. It's hiden to user.
 	void setOnMessageCallback(const MessageCallback& cb){ msgcb_ = cb; }  // msg is coming.
 	void setConnectionCallback(const ConnectionCallback& cb){ conncb_ = cb; }  // called by connecting and disconnecting socket

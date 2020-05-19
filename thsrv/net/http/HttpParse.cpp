@@ -37,17 +37,18 @@ const std::string HttpParse::kUnknown="Unknown";
 const std::string HttpParse::kHttp10="HTTP/1.0";
 const std::string HttpParse::kHttp11="HTTP/1.1"; 
 
-HttpParse::HttpParse(Buffer& buf, TimeStamp receivedTime):method_(kInvalid), \
-    version_(kUnknown),\
-    receivedTime_(receivedTime)
-{
-    err_ = parseRequest(buf) ? false : true;
-}
+HttpParse::HttpParse():state_(kExpectRequestLine),\
+    method_(kInvalid), \
+    version_(kUnknown)
+{}
+
 bool HttpParse::addHeader(const char* start,const char* colon, const char* end)
 {
     if(colon==start || colon==end || start==end) return false;
+    std::string field(start, colon);
+    colon++;
     while(*colon==' ' && colon!=end) colon++;
-    std::string field(start, colon), value(colon, end);
+    std::string value(colon, end);
     headers_[field] = value;
     return true;
 }
@@ -114,24 +115,71 @@ bool HttpParse::parseRequestLine(const char* start, const char* end)
     }
     return success;
 }
-bool HttpParse::parseRequest(Buffer& buf)
+bool HttpParse::parseRequest(Buffer& buf, const TimeStamp receivedTime)
 {
-    std::string line = buf.getlineReadBuf();
-    bool success = parseRequestLine(&*line.begin(), &*line.end());
-    const char* colon = nullptr;
-    // save the request headers
-    while(true){
-        line = buf.getlineReadBuf();
-        if(line.empty() || 0==buf.readable()){
-            break;
+    bool success = true;
+    bool hasMore = true;
+    std::string line = "";
+    while(hasMore){
+        if(state_==kExpectRequestLine){
+            line = buf.getlineReadBuf();
+            success = parseRequestLine(&*line.begin(), &*line.end());
+            if(success){
+                setReceiveTime(receivedTime);
+                state_ = kExpectHeaders;
+            }else{
+                hasMore = false;
+            }
+        }else if(state_==kExpectHeaders){
+            line = buf.getlineReadBuf();
+            if(line.empty()){
+                state_ = kExpectBody;
+            }
+            if(0 == buf.readable()){
+                state_ = kGotAll;
+                hasMore = false;
+            }
+            const char *colon = std::find(&*line.begin(), &*line.end(), ':');
+            if(colon == &*line.end()){
+                success = false; 
+                hasMore = false;
+            }else{
+                success = addHeader(&*line.begin(), colon, &*line.end());
+                if(!success){
+                    hasMore = false;
+                }
+            }
+        }else if(state_ == kExpectBody){
+            std::string body = buf.getReadBufferToString();
+            setBody(body);
+            state_ = kGotAll;
+            hasMore = false;
+        }else{
+            hasMore = false;
         }
-        // 存在header
-        colon = std::find(&*line.begin(), &*line.end(), ':');
-        success &= addHeader(&*line.begin(), colon, &*line.end());
     }
-    std::string body = buf.getReadBufferToString();
-    setBody(body);
     return success;
+}
+
+void HttpParse::reset()
+{
+    HttpParse dummy;
+    this->swap(dummy);
+}
+
+void HttpParse::swap(HttpParse& that)
+{
+    std::swap(state_, that.state_);
+
+    method_.swap(that.method_);
+    version_.swap(that.version_);
+    std::swap(receivedTime_, that.receivedTime_);
+
+    path_.swap(that.path_);
+    query_.swap(that.query_);
+    body_.swap(that.body_);
+
+    headers_.swap(that.headers_);
 }
 
 /// END CLASS

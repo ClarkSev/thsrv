@@ -18,7 +18,7 @@
 #include "thsrv/base/copyable.h"
 
 #include <string>
-#include <unordered_map>
+#include <map>
 
 namespace thsrv
 {
@@ -51,11 +51,11 @@ public:
 
     void addHeader(const std::string& key, const std::string& value);
     const std::string getHeader(const std::string& field);
-    
+    void setCloseConn(bool on);
+
     void setStatusCode(ResponseState code){ state_ = code; }
-    void setBody(const std::string& body){ body_ = body; }
+    void setBody(const std::string& body);
     // void setVersion(Version ver){ version_ = ver; }
-    void setCloseConn(bool on){ closeConn_ = on; }
     bool getCloseConn() const{ return closeConn_; }
     void setContentType(const std::string& type){ addHeader("Content-Type", type); }
 
@@ -74,7 +74,7 @@ private:
     std::string stateMsg_;
     std::string body_;
 
-    std::unordered_map<std::string, std::string>headers_;
+    std::map<std::string, std::string>headers_;
 };
 
 /// END CLASS

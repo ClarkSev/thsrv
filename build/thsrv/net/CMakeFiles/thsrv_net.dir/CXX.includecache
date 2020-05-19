@@ -443,6 +443,8 @@ sys/types.h
 -
 sys/socket.h
 -
+netinet/tcp.h
+-
 errno.h
 -
 string.h

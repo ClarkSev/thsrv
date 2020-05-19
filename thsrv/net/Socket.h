@@ -45,7 +45,10 @@ const struct sockaddr_in6* sockaddr_in6_cast(const struct sockaddr* taddr);
 
 /// 基本操作函数
 int createSocketNonBlock(sa_family_t taf);
-void setReuseSocket(const int tfd);
+void setReuseSocket(const int tfd, const bool on);
+void setTcpNoDelay(const int tfd, const bool on);
+void setKeepAlive(const int tfd, const bool on);
+
 void bind(int tsockfd,const struct sockaddr* taddr);
 void listen(int tsockfd);
 ssize_t read(int tfd, void* tbuf, size_t tcnt);
@@ -67,13 +70,21 @@ class Socket
 public:
 	Socket(const InetAddress& taddr);
 	explicit Socket(int fd):sockfd_(fd){}
+
 	~Socket();
+
+	void setReuse(const bool on){ socketops::setReuseSocket(sockfd_, on); }
+	void setTcpNoDelay(const bool on){ socketops::setTcpNoDelay(sockfd_, on); }
+	void setKeepAlive(const bool on){ socketops::setKeepAlive(sockfd_, on); }
+
 	void bind(const InetAddress &taddr);
 	void listen();
-	ssize_t recv(void* tbuf, size_t tcnt);
-	ssize_t send(const void* tbuf,size_t tlen);
 	int accept(InetAddress* peeraddr);
 	void connect(const InetAddress &taddr);
+
+	ssize_t recv(void* tbuf, size_t tcnt);
+	ssize_t send(const void* tbuf,size_t tlen);
+
 	int fd()const{ return sockfd_; }
 private:
 	const int sockfd_;

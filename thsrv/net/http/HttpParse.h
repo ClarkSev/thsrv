@@ -19,7 +19,7 @@
 #include "thsrv/base/TimeStamp.h"
 
 #include <string>
-#include <unordered_map>
+#include <map>
 
 namespace thsrv
 {
@@ -34,9 +34,9 @@ class HttpParse : public copyable
 public:  // proporities
     static const std::string kInvalid, kGet, kPost, kHead;
     static const std::string kUnknown, kHttp10, kHttp11; 
-
+    enum State{ kExpectRequestLine, kExpectHeaders, kExpectBody, kGotAll };
 public:
-    HttpParse(Buffer& buf, TimeStamp receivedTime);
+    HttpParse();
 
     std::string getHeader(const std::string& field){
         if(headers_.find(field)==headers_.end()) return "NULL";
@@ -44,12 +44,16 @@ public:
             return headers_[field];
         }
     }
-    const std::unordered_map<std::string, std::string>headers()const{ return headers_; }
+    const std::map<std::string, std::string>headers()const{ return headers_; }
     const std::string getMethod() const{ return method_; }
     const std::string path() const{ return path_; }
     const std::string getVersion() const{ return version_; }
-    bool getError() const{ return err_; }
     const std::string getBody() const{ return body_; }
+    bool gotAll()const{ return state_ == kGotAll; }
+    bool parseRequest(Buffer& buf, const TimeStamp receivedTime);
+
+    void reset();
+    void swap(HttpParse& that);
 
 private:  // method
     void setBody(const std::string& body){ body_ = body; }
@@ -61,10 +65,9 @@ private:  // method
     void setReceiveTime(const TimeStamp t_time){ receivedTime_ = t_time; }
     bool parseRequestLine(const char* start, const char* end);
 
-    bool parseRequest(Buffer& buf);
-
 private:  // proporities
-    bool err_;  // 判断是否解析成功
+    State state_;
+
     std::string method_;
     std::string version_;
     TimeStamp receivedTime_;
@@ -73,7 +76,7 @@ private:  // proporities
     std::string query_;
     std::string body_;
 
-	std::unordered_map<std::string, std::string>headers_;
+	std::map<std::string, std::string>headers_;
 
 };  //END HttpParse CLASS
 

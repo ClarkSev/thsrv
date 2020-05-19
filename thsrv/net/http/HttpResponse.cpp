@@ -36,7 +36,7 @@ closeConn_(close),\
 state_(ResponseState::kInvalid),\
 version_(ver)
 {
-
+    setCloseConn(closeConn_);
 }
 
 void HttpResponse::addHeader(const std::string& key, const std::string& val)
@@ -48,7 +48,17 @@ const std::string HttpResponse::getHeader(const std::string& field)
     if(headers_.find(field)==headers_.end()) return "";
     else return headers_[field];
 }
-
+void HttpResponse::setCloseConn(bool on)
+{
+    std::string close = on? "close" : "keep-alive";
+    addHeader("Connection", close);
+    closeConn_ = on;
+}
+void HttpResponse::setBody(const std::string& body)
+{
+    body_ = body;
+    addHeader("Content-Length", std::to_string(body_.size()));
+}
 void HttpResponse::appendInBuffer(Buffer& buf)
 {
     if(!isValidVersion()){
