@@ -14,15 +14,23 @@
 //related others' project file header
 #include "thsrv/base/Logger.h"
 #include "thsrv/base/Thread.h"
+#include "thsrv/base/CurrentThread.h"
 
 #include <assert.h>
 #include <errno.h>  // for errno_t
+#include <sys/syscall.h>  // for syscall()
+#include <unistd.h>     // for getpid
 
 namespace thsrv
 {
 
 namespace detail
 {
+
+pid_t gettid()
+{
+	return static_cast<pid_t>(syscall(SYS_gettid));  // get the only sign of tid
+}
 
 class ThreadData
 {
@@ -46,6 +54,22 @@ void* _buildin_start_thread(void* targ)
 }
 
 }  //END DETAIL NAMESPACE
+
+namespace CurrentThread
+{
+
+void cacheTid()
+{
+	if(cacheTid_ == 0)
+		cacheTid_ = detail::gettid();
+}
+
+inline bool isMainThread()
+{
+	return tid()==::getpid();
+}
+
+}  // END CURRENTTHREAD NAMESPACE
 
 namespace base
 {

@@ -15,7 +15,6 @@
 #include "thsrv/net/Buffer.h"
 
 #include <string>
-#include <unordered_map>
 
 namespace thsrv
 {
@@ -57,7 +56,6 @@ void HttpResponse::setCloseConn(bool on)
 void HttpResponse::setBody(const std::string& body)
 {
     body_ = body;
-    addHeader("Content-Length", std::to_string(body_.size()));
 }
 void HttpResponse::appendInBuffer(Buffer& buf)
 {
@@ -67,6 +65,9 @@ void HttpResponse::appendInBuffer(Buffer& buf)
     std::string code = parseStatusCode();
     std::string line = version_ + " " + code + " " + stateMsg_ + kCRLF;
     buf.appendInWtBuf(line);
+
+    addHeader("Content-Length", std::to_string(body_.size()));
+
     // append headers
     for(auto& header : headers_){
         line = header.first + ":" + header.second + kCRLF;

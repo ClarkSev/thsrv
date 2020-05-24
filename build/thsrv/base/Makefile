@@ -152,6 +152,33 @@ Condition.cpp.s:
 	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.s
 .PHONY : Condition.cpp.s
 
+CurrentThread.o: CurrentThread.cpp.o
+
+.PHONY : CurrentThread.o
+
+# target to build an object file
+CurrentThread.cpp.o:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o
+.PHONY : CurrentThread.cpp.o
+
+CurrentThread.i: CurrentThread.cpp.i
+
+.PHONY : CurrentThread.i
+
+# target to preprocess a source file
+CurrentThread.cpp.i:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.i
+.PHONY : CurrentThread.cpp.i
+
+CurrentThread.s: CurrentThread.cpp.s
+
+.PHONY : CurrentThread.s
+
+# target to generate assembly for a file
+CurrentThread.cpp.s:
+	cd /home/hong/codedir/sharedfile/thsrvfm/build && $(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.s
+.PHONY : CurrentThread.cpp.s
+
 LogStream.o: LogStream.cpp.o
 
 .PHONY : LogStream.o
@@ -299,6 +326,9 @@ help:
 	@echo "... Condition.o"
 	@echo "... Condition.i"
 	@echo "... Condition.s"
+	@echo "... CurrentThread.o"
+	@echo "... CurrentThread.i"
+	@echo "... CurrentThread.s"
 	@echo "... LogStream.o"
 	@echo "... LogStream.i"
 	@echo "... LogStream.s"

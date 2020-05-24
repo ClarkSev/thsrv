@@ -14,6 +14,9 @@ thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o: ../thsrv/base/copyable.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o: ../thsrv/base/noncopyable.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o: ../thsrv/base/Condition.cpp
 
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o: ../thsrv/base/CurrentThread.h
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o: ../thsrv/base/CurrentThread.cpp
+
 thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o: ../thsrv/base/LogStream.h
 thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o: ../thsrv/base/StringPiece.h
 thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o: ../thsrv/base/noncopyable.h
@@ -28,6 +31,7 @@ thsrv/base/CMakeFiles/thsrv_base.dir/Logger.cpp.o: ../thsrv/base/noncopyable.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Logger.cpp.o: ../thsrv/base/Logger.cpp
 
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/Atomic.h
+thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/CurrentThread.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/LogStream.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/Logger.h
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/StringPiece.h

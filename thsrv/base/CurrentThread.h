@@ -16,28 +16,27 @@
 //c library header
 //c++ library header
 //related others' project file header
-#include <sys/syscall.h>  // for syscall()
+
 #include <sys/types.h>  // for pid_t ...
-#include <unistd.h>     // for getpid
 
 namespace thsrv
 {
 
 namespace CurrentThread
 {
-	
-inline pid_t gettid()
-{
-	return static_cast<pid_t>(syscall(SYS_gettid));  // get the only sign of tid
-}
+
+extern __thread pid_t cacheTid_;   // 使用变量将每个进程的 tid 存储起来， 以防止每次调用tid时陷入内核
+
+void cacheTid();
+
 inline pid_t tid()
 {
-	return gettid();
+	if(__builtin_expect(cacheTid_==0, 0)){
+		cacheTid();
+	}
+	return cacheTid_;
 }
-inline bool isMainThread()
-{
-	return tid()==::getpid();
-}
+
 	
 } //END CurrentThread NAMESPACE
 	

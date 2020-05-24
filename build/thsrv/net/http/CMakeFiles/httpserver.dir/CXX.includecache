@@ -23,11 +23,7 @@ stdio.h
 -
 
 ..//thsrv/base/CurrentThread.h
-sys/syscall.h
--
 sys/types.h
--
-unistd.h
 -
 
 ..//thsrv/base/LogStream.h

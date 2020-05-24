@@ -108,7 +108,7 @@ void httpCallback(const HttpParse& req, HttpResponse& response)
         response.setContentType("text/html");
         response.addHeader("Server", "thsrv");
         std::string now = TimeStamp::now().toStringFmt(false);
-        std::string body = "<html><head><title>This is title!</title></head>"
+        std::string body = "<html><head><title>T.H.'s WebServer</title></head>"
                             "<body><h1>Hello,Now is "+ now +
                             "</h1></body></html>";
         response.setBody(body);
@@ -122,7 +122,7 @@ void httpCallback(const HttpParse& req, HttpResponse& response)
         response.setStatusCode(HttpResponse::ResponseState::k200OK);
         response.setContentType("text/plain");
         response.addHeader("Server", "thsrv");
-        response.setBody("<html><body><h1>Hello world!</h1></body></html>");
+        response.setBody("<html><head></head><body><h1>Hello world!</h1></body></html>");
 
     }else{
         response.setStatusCode(HttpResponse::ResponseState::k404NotFound);

@@ -129,9 +129,33 @@ thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o.provides: thsrv/base/CMakeF
 thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o.provides.build: thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o
 
 
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o: thsrv/base/CMakeFiles/thsrv_base.dir/flags.make
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o: ../thsrv/base/CurrentThread.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o"
+	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o -c /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/CurrentThread.cpp
+
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/thsrv_base.dir/CurrentThread.cpp.i"
+	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/CurrentThread.cpp > CMakeFiles/thsrv_base.dir/CurrentThread.cpp.i
+
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/thsrv_base.dir/CurrentThread.cpp.s"
+	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/CurrentThread.cpp -o CMakeFiles/thsrv_base.dir/CurrentThread.cpp.s
+
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.requires:
+
+.PHONY : thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.requires
+
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.provides: thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.requires
+	$(MAKE) -f thsrv/base/CMakeFiles/thsrv_base.dir/build.make thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.provides.build
+.PHONY : thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.provides
+
+thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.provides.build: thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o
+
+
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: thsrv/base/CMakeFiles/thsrv_base.dir/flags.make
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o: ../thsrv/base/Thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o"
 	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/thsrv_base.dir/Thread.cpp.o -c /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/Thread.cpp
 
 thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.i: cmake_force
@@ -155,7 +179,7 @@ thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o.provides.build: thsrv/base/CMa
 
 thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o: thsrv/base/CMakeFiles/thsrv_base.dir/flags.make
 thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o: ../thsrv/base/ThreadPool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o"
 	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o -c /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/ThreadPool.cpp
 
 thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.i: cmake_force
@@ -179,7 +203,7 @@ thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o.provides.build: thsrv/base
 
 thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o: thsrv/base/CMakeFiles/thsrv_base.dir/flags.make
 thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o: ../thsrv/base/TimeStamp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o"
 	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o -c /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/TimeStamp.cpp
 
 thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.i: cmake_force
@@ -206,6 +230,7 @@ thsrv_base_OBJECTS = \
 "CMakeFiles/thsrv_base.dir/Condition.cpp.o" \
 "CMakeFiles/thsrv_base.dir/Logger.cpp.o" \
 "CMakeFiles/thsrv_base.dir/LogStream.cpp.o" \
+"CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o" \
 "CMakeFiles/thsrv_base.dir/Thread.cpp.o" \
 "CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o" \
 "CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o"
@@ -216,12 +241,13 @@ thsrv_base_EXTERNAL_OBJECTS =
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/Logger.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o
+lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/build.make
 lib/libthsrv_base.a: thsrv/base/CMakeFiles/thsrv_base.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library ../../lib/libthsrv_base.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/hong/codedir/sharedfile/thsrvfm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library ../../lib/libthsrv_base.a"
 	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && $(CMAKE_COMMAND) -P CMakeFiles/thsrv_base.dir/cmake_clean_target.cmake
 	cd /home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/thsrv_base.dir/link.txt --verbose=$(VERBOSE)
 
@@ -233,6 +259,7 @@ thsrv/base/CMakeFiles/thsrv_base.dir/build: lib/libthsrv_base.a
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o.requires
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/Logger.cpp.o.requires
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o.requires
+thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o.requires
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o.requires
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o.requires
 thsrv/base/CMakeFiles/thsrv_base.dir/requires: thsrv/base/CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o.requires

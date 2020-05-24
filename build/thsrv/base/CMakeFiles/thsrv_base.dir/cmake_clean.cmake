@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/thsrv_base.dir/Condition.cpp.o"
   "CMakeFiles/thsrv_base.dir/Logger.cpp.o"
   "CMakeFiles/thsrv_base.dir/LogStream.cpp.o"
+  "CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o"
   "CMakeFiles/thsrv_base.dir/Thread.cpp.o"
   "CMakeFiles/thsrv_base.dir/ThreadPool.cpp.o"
   "CMakeFiles/thsrv_base.dir/TimeStamp.cpp.o"

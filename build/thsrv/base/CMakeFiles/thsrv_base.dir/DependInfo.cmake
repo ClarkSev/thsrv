@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/Condition.cpp" "/home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base/CMakeFiles/thsrv_base.dir/Condition.cpp.o"
+  "/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/CurrentThread.cpp" "/home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base/CMakeFiles/thsrv_base.dir/CurrentThread.cpp.o"
   "/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/LogStream.cpp" "/home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base/CMakeFiles/thsrv_base.dir/LogStream.cpp.o"
   "/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/Logger.cpp" "/home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base/CMakeFiles/thsrv_base.dir/Logger.cpp.o"
   "/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/Thread.cpp" "/home/hong/codedir/sharedfile/thsrvfm/build/thsrv/base/CMakeFiles/thsrv_base.dir/Thread.cpp.o"

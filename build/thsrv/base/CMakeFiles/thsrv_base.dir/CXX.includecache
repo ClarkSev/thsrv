@@ -23,11 +23,7 @@ stdio.h
 -
 
 ..//thsrv/base/CurrentThread.h
-sys/syscall.h
--
 sys/types.h
--
-unistd.h
 -
 
 ..//thsrv/base/LogStream.h
@@ -128,6 +124,10 @@ errno.h
 sys/time.h
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/sys/time.h
 
+/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/CurrentThread.cpp
+thsrv/base/CurrentThread.h
+/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/thsrv/base/CurrentThread.h
+
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/LogStream.cpp
 thsrv/base/LogStream.h
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/thsrv/base/LogStream.h
@@ -149,9 +149,15 @@ thsrv/base/Logger.h
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/thsrv/base/Logger.h
 thsrv/base/Thread.h
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/thsrv/base/Thread.h
+thsrv/base/CurrentThread.h
+/home/hong/codedir/sharedfile/thsrvfm/thsrv/base/thsrv/base/CurrentThread.h
 assert.h
 -
 errno.h
+-
+sys/syscall.h
+-
+unistd.h
 -
 
 /home/hong/codedir/sharedfile/thsrvfm/thsrv/base/ThreadPool.cpp

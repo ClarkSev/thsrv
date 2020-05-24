@@ -3,6 +3,7 @@ set(BASE_SRC
 	Condition.cpp
 	Logger.cpp
 	LogStream.cpp
+	CurrentThread.cpp
 	Thread.cpp
 	ThreadPool.cpp
 	TimeStamp.cpp
