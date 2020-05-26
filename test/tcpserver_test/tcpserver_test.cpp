@@ -77,7 +77,7 @@ public:
 	}
 	void onMessage(const TcpConnectionPtr& conn,Buffer& buf,TimeStamp receiveTime)
 	{
-		std::string data = buf.getReadBufferToString();
+		std::string data = buf.retrieveAllToString();
 		LOG_INFO<<"recv data:"<<data;
 		conn->send(data);
 	}

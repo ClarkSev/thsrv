@@ -64,20 +64,20 @@ void HttpResponse::appendInBuffer(Buffer& buf)
     }
     std::string code = parseStatusCode();
     std::string line = version_ + " " + code + " " + stateMsg_ + kCRLF;
-    buf.appendInWtBuf(line);
+    buf.append(line);
 
     addHeader("Content-Length", std::to_string(body_.size()));
 
     // append headers
     for(auto& header : headers_){
         line = header.first + ":" + header.second + kCRLF;
-        buf.appendInWtBuf(line);
+        buf.append(line);
         line.clear();
     }
 
-    buf.appendInWtBuf(kCRLF);
+    buf.append(kCRLF);
     // append body
-    buf.appendInWtBuf(body_ + kCRLF);
+    buf.append(body_ + kCRLF);
 }
 
 std::string HttpResponse::parseStatusCode()

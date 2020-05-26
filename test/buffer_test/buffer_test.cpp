@@ -20,22 +20,22 @@ int main()
 {
     Buffer buf;
     const char tmp[] = "123\r\n456\r\n\r\n";
-    buf.appendInRdBuf(tmp, strlen(tmp));
-    const char* crlf = buf.findCRLFReadBuf();
+    buf.append(tmp, strlen(tmp));
+    const char* crlf = buf.findCRLF();
     if(crlf){
-        printf("the pos = %d\n", crlf - buf.beginReadOutBuf());
+        printf("the pos = %d\n", crlf - buf.beginRead());
     }else{
         printf("the pos is NULL\n");
     }
-    string lines = buf.getlineReadBuf();
+    string lines = buf.getLineBuffer();
 
     cout<<lines<<endl;
-    crlf = buf.findCRLFReadBuf();
+    crlf = buf.findCRLF();
 
-    lines = buf.getlineReadBuf();
+    lines = buf.getLineBuffer();
     cout<<lines<<endl;
 
-    lines = buf.getlineReadBuf();
+    lines = buf.getLineBuffer();
     cout<<lines<<endl;
     cout<<buf.readable()<<endl;
     return 0;

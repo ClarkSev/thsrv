@@ -51,7 +51,7 @@ public:
     void onMessage(const TcpConnectionPtr& conn, Buffer& buf,TimeStamp receiveTime)
     {
         LOG_INFO<<"onMessage.";
-        LOG_INFO<<"recv data = "<<buf.getReadBufferToString();
+        LOG_INFO<<"recv data = "<<buf.retrieveAllToString();
     }
     void writeComplete(const TcpConnectionPtr& conn)
     {

@@ -42,7 +42,7 @@ void defaultConnectionCallback(const TcpConnectionPtr& conn)
 }
 void defaultOnMessageCallback(const TcpConnectionPtr& conn, Buffer& buf, TimeStamp receiveTime)
 {
-	LOG_INFO<<"Get "<< buf.getReadBufferToString().size() \
+	LOG_INFO<<"Get "<< buf.retrieveAllToString().size() \
 			<<" bytes data from : "<<conn->getLocalAddr().toIpAndPort();
 }
 
@@ -120,7 +120,7 @@ void TcpConnection::send(const StringPiece& tstr)
 void TcpConnection::send(const Buffer& buf)
 {
 	Buffer lbuf = buf;
-	std::string lstr = lbuf.retrieveAllToStringFromWtBuf();
+	std::string lstr = lbuf.retrieveAllToString();
 	send(lstr);
 }
 void TcpConnection::onConnection()
@@ -165,16 +165,16 @@ void TcpConnection::handleRead(TimeStamp receiveTime)
 void TcpConnection::handleWrite()   // shell handle it
 {
 	loop_->assertInLoopThread(); 
-	size_t remindBytes = msgbuf_.writable();
-	ssize_t nwt = socket_->send(static_cast<void*>(msgbuf_.beginWriteOutBuf()), remindBytes);
+	size_t remindBytes = msgbuf_.readable();
+	ssize_t nwt = socket_->send(static_cast<void*>(msgbuf_.beginRead()), remindBytes);
 	if(nwt<0){
 		LOG_WARN<<"sockfd = "<<channel_->fd()<<" handleWrite:ERROR "<<strerror(errno);
 		return;
 	}else if(nwt < static_cast<ssize_t>(remindBytes) ){
 		remindBytes -= nwt;
-		msgbuf_.retrieveFromWtBuf(nwt);  // it has already send nwt-bytes to remote socket
+		msgbuf_.retrieve(nwt);  // it has already send nwt-bytes to remote socket
 	}
-	if(msgbuf_.writable()==0){
+	if(msgbuf_.readable()==0){
 		if(channel_->isWritting())  channel_->disableWrite();
 		LOG_INFO<<"TcpConnection::handleWrite events = "<<channel_->eventToString(channel_->events());
 		if(writeCompletecb_){
@@ -234,7 +234,7 @@ void TcpConnection::sendInLoop(const void* data,const size_t tlen)
 	assert(remainBytes > 0);
 	// push the data into outbuffer.
 	// LOG_INFO<<"TcpConnection::sendInLoop push data into buffer.";
-	msgbuf_.appendInWtBuf(static_cast<const char*>(data), remainBytes);
+	msgbuf_.append(static_cast<const char*>(data), remainBytes);
 	if(!channel_->isWritting()){  
 		channel_->enableWrite();
 	}

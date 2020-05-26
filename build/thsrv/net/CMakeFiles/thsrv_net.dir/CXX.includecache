@@ -127,6 +127,8 @@ thsrv/base/StringPiece.h
 ../thsrv/net/thsrv/base/StringPiece.h
 string.h
 -
+assert.h
+-
 vector
 -
 string

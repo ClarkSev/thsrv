@@ -58,7 +58,7 @@ private:  // private properity
 	EventLoop* baseLoop_;
 	const std::string name_;
 	std::unique_ptr<Acceptor> acceptor_;
-	std::unique_ptr<Poller> poller_;
+	// std::unique_ptr<Poller> poller_;
 	ConnectMap connects_;
 	std::unique_ptr<EventLoopThreadPool>loopPool_;
 	// callback function

@@ -42,7 +42,6 @@ TcpServer::TcpServer(EventLoop* loop,const std::string& tnm,const InetAddress& t
 baseLoop_(loop),
 name_(tnm),
 acceptor_(new Acceptor(loop, taddr)),
-poller_(new Poller(loop)),
 loopPool_(new EventLoopThreadPool(loop, kInitNumEventLoopThreads, tnm + std::string("EventThreads")) )
 {
 	assert(baseLoop_ != NULL);

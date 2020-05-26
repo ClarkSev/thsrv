@@ -122,7 +122,7 @@ bool HttpParse::parseRequest(Buffer& buf, const TimeStamp receivedTime)
     std::string line = "";
     while(hasMore){
         if(state_==kExpectRequestLine){
-            line = buf.getlineReadBuf();
+            line = buf.getLineBuffer();
             success = parseRequestLine(&*line.begin(), &*line.end());
             if(success){
                 setReceiveTime(receivedTime);
@@ -131,7 +131,7 @@ bool HttpParse::parseRequest(Buffer& buf, const TimeStamp receivedTime)
                 hasMore = false;
             }
         }else if(state_==kExpectHeaders){
-            line = buf.getlineReadBuf();
+            line = buf.getLineBuffer();
             if(line.empty()){
                 state_ = kExpectBody;
             }
@@ -150,7 +150,7 @@ bool HttpParse::parseRequest(Buffer& buf, const TimeStamp receivedTime)
                 }
             }
         }else if(state_ == kExpectBody){
-            std::string body = buf.getReadBufferToString();
+            std::string body = buf.retrieveAllToString();
             setBody(body);
             state_ = kGotAll;
             hasMore = false;
