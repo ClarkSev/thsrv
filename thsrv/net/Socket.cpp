@@ -143,7 +143,7 @@ ssize_t send(int tsockfd, const void* tbuf,size_t tlen)
 {
 	ssize_t sdlen = ::write(tsockfd, tbuf, tlen);
 	if(sdlen<0){
-		LOG_FATAL<<"ERROR:"<<strerror(errno);
+		LOG_WARN<<strerror(errno);
 	}
 	return sdlen;
 }
