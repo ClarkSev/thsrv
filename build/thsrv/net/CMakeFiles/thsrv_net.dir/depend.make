@@ -89,7 +89,9 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/base/noncopyable.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Callback.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Channel.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/EventLoop.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/InetAddress.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Poller.h
+thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Socket.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/Timer.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/TimerId.h
 thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o: ../thsrv/net/TimerQueue.h

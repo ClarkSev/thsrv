@@ -90,7 +90,9 @@ thsrv/net/CMakeFiles/thsrv_net.dir/EventLoop.cpp.o
  ..//thsrv/net/Callback.h
  ..//thsrv/net/Channel.h
  ..//thsrv/net/EventLoop.h
+ ..//thsrv/net/InetAddress.h
  ..//thsrv/net/Poller.h
+ ..//thsrv/net/Socket.h
  ..//thsrv/net/Timer.h
  ..//thsrv/net/TimerId.h
  ..//thsrv/net/TimerQueue.h

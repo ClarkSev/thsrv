@@ -139,6 +139,8 @@ string
 ..//thsrv/net/EventLoop.h
 thsrv/base/noncopyable.h
 ../thsrv/net/thsrv/base/noncopyable.h
+thsrv/base/TimeStamp.h
+../thsrv/net/thsrv/base/TimeStamp.h
 thsrv/base/Mutex.h
 ../thsrv/net/thsrv/base/Mutex.h
 thsrv/base/Condition.h

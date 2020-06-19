@@ -56,24 +56,29 @@ void Acceptor::handleRead()
 	loop_->assertInLoopThread();
 	assert(listening_);
 	InetAddress peeraddr;
-	int connfd = sockfd_.accept(&peeraddr);
-	if(connfd >= 0){
-		if(newConncb_){
-			newConncb_(connfd, peeraddr);
-		}else{ 
-			socketops::close(connfd);
-		}
-	}else{
-		LOG_ERR<<"ERROR:"<<strerror(connfd);
-		if(connfd == EMFILE){
-			::close(idlefd_);
-			idlefd_ = sockfd_.accept(&peeraddr);
-			::close(idlefd_);
-			idlefd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC); // reset idlefd_
+	bool hasMore = true;
+	int savedErr;
+	//while(hasMore){
+		int connfd = sockfd_.accept(&peeraddr, savedErr);
+		if(connfd >= 0){
+			if(newConncb_){
+				newConncb_(connfd, peeraddr);
+			}else{ 
+				socketops::close(connfd);
+			}
 		}else{
-			LOG_FATAL<<"other ERROR";
+			hasMore = false;
+			// LOG_WARN<<strerror(savedErr);
+			if(savedErr == EMFILE){
+				::close(idlefd_);
+				idlefd_ = sockfd_.accept(&peeraddr, savedErr);
+				::close(idlefd_);
+				idlefd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC); // reset idlefd_
+			}else{
+				// LOG_FATAL<<"other ERROR";
+			}
 		}
-	}
+	//}
 
 }
 

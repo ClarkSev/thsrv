@@ -16,6 +16,7 @@
 //c++ library header
 //related others' project file header
 #include "thsrv/base/noncopyable.h"
+#include "thsrv/base/TimeStamp.h"
 #include "thsrv/base/Mutex.h"
 #include "thsrv/base/Condition.h"
 #include "thsrv/base/QueueThreadSafe.h"
@@ -60,9 +61,14 @@ public: // method
 // private: // method
 	void assertInLoopThread()const;
 	bool isInLoopThread() const;
+private:
+	void handleRead();
+	void wakeup();
 private: // properity
 	bool running_;
+	int wakeupFd_;
 	const pid_t currentId_;
+	std::shared_ptr<Channel> wakeupChannel_;
 	std::unique_ptr<Poller> poller_;
 	mutable base::MutexLock mx_;
 	base::Condition readyCond_;

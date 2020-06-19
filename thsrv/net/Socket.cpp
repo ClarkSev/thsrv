@@ -141,22 +141,22 @@ ssize_t readv(int tfd, const struct iovec* tiov,int tiovcnt)
 }
 ssize_t send(int tsockfd, const void* tbuf,size_t tlen)
 {
-	ssize_t sdlen = ::send(tsockfd, tbuf, tlen, 0);
+	ssize_t sdlen = ::write(tsockfd, tbuf, tlen);
 	if(sdlen<0){
 		LOG_FATAL<<"ERROR:"<<strerror(errno);
 	}
 	return sdlen;
 }
 // 仿照 muduo 库实现
-int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen)
+int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen, int& retErrno)
 {
 	// int ret = ::accept(tsockfd, taddr, taddrlen);
 	int ret = ::accept4(tsockfd, taddr, taddrlen, SOCK_NONBLOCK | SOCK_CLOEXEC);
 	// struct sockaddr_in *addr4 = sockaddr_in_cast(taddr);
 	// LOG_DEBUG<<" *addr4 = "<<inet_ntoa(addr4->sin_addr);
 	if(ret<0){
-		int savedErr = errno;
-		switch(savedErr){
+		retErrno = errno;
+		switch(retErrno){
 		  case EAGAIN:
 		  case ECONNABORTED:
 		  case EINTR:
@@ -164,8 +164,7 @@ int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen)
 		  case EPERM:
 		  case EMFILE: // 当文件描述符达上限时需要进行处理，事先准备一个idleFd
 			// expected errors
-			ret = savedErr;  // 将错误代码传出
-			LOG_WARN << " ignore error of ::accept " << strerror(savedErr);
+			// LOG_WARN << " ignore error of ::accept " << strerror(retErrno);
 			break;
 		  case EBADF:
 		  case EFAULT:
@@ -176,10 +175,10 @@ int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen)
 		  case ENOTSOCK:
 		  case EOPNOTSUPP:
 			// unexpected errors
-			LOG_FATAL << "unexpected error of ::accept " << strerror(savedErr);
+			LOG_FATAL << "unexpected error of ::accept " << strerror(retErrno);
 			break;
 		  default:
-			LOG_FATAL << "unknown error of ::accept " << strerror(savedErr);
+			LOG_FATAL << "unknown error of ::accept " << strerror(retErrno);
 			break;
 		}
 	}
@@ -255,12 +254,12 @@ ssize_t Socket::send(const void* tbuf,size_t tlen)
 {
 	return socketops::send(sockfd_, tbuf, tlen);
 }
-int Socket::accept(InetAddress *peeraddr)
+int Socket::accept(InetAddress *peeraddr, int& retErrno)
 {
 	struct sockaddr_in laddr;  // FIXME: ipv6
 	bzero(&laddr, sizeof(laddr));
 	socklen_t tlen = static_cast<socklen_t>(sizeof(laddr));  // be careful the value
-	int lfd = socketops::accept(sockfd_, socketops::sockaddr_cast(&laddr), &tlen);
+	int lfd = socketops::accept(sockfd_, socketops::sockaddr_cast(&laddr), &tlen, retErrno);
 	if(lfd >= 0){
 		peeraddr->setSockAddr4(laddr); 
 	}

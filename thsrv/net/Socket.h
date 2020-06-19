@@ -54,7 +54,7 @@ void listen(int tsockfd);
 ssize_t read(int tfd, void* tbuf, size_t tcnt);
 ssize_t readv(int tfd, const struct iovec* tiov,int tiovcnt);
 ssize_t send(int tsockfd, const void* tbuf,size_t tlen);
-int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen);
+int accept(int tsockfd, struct sockaddr* taddr, socklen_t *taddrlen, int& retErrno);
 int connect(int tsockfd, const struct sockaddr* taddr);   // return errno
 void close(int tsockfd);
 void shutdownWrite(int tsockfd);
@@ -79,7 +79,7 @@ public:
 
 	void bind(const InetAddress &taddr);
 	void listen();
-	int accept(InetAddress* peeraddr);
+	int accept(InetAddress* peeraddr, int& retErrno);
 	void connect(const InetAddress &taddr);
 
 	ssize_t recv(void* tbuf, size_t tcnt);

@@ -16,12 +16,30 @@
 #include "thsrv/base/Logger.h"
 #include "thsrv/net/Poller.h"
 #include "thsrv/net/Channel.h"
+#include "thsrv/net/Socket.h"
 // #include "thsrv/base/TimeStamp.h"
 
+#include <sys/eventfd.h>
 #include <assert.h>  // for assert
+#include <signal.h>  // for signal
 
 namespace thsrv
 {
+
+// 当客户端异常退出时，如果服务器仍然往客户端写数据
+// 会导致服务器接收到 RST 信号，并产生 SIGPIPE 信号，然后关闭服务器
+// 因此需要忽略该错误，只需忽略该信号即可解决
+#pragma GCC diagnostic ignored "-Wold-style-cast"
+class IgnoreSigPipe
+{
+public:
+	IgnoreSigPipe(){
+		::signal(SIGPIPE, SIG_IGN);
+	}
+};  // END CLASS IgnorePipe
+#pragma GCC diagnostic error "-Wold-style-cast"
+
+IgnoreSigPipe g_ignoreSigPipeObj;
 
 namespace net
 {
@@ -29,10 +47,27 @@ namespace net
 /// START CLASS
 __thread EventLoop* l_eventLoopInThread = NULL;
 
+namespace detail
+{
+
+// 
+int createEventFd()
+{
+	int evtfd = eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
+	if(evtfd<0){
+		LOG_FATAL<<"createEventFd ERROR";
+	}
+	return evtfd;
+}
+
+}  // end namespace detail
+
 //ctor.
 EventLoop::EventLoop():\
 running_(false),
+wakeupFd_(detail::createEventFd()),
 currentId_(CurrentThread::tid()),
+wakeupChannel_(new Channel(this, wakeupFd_)),
 poller_(new Poller(this)),
 readyCond_(mx_),
 timerQue_(new TimerQueue(this))
@@ -41,10 +76,13 @@ timerQue_(new TimerQueue(this))
 		LOG_FATAL<<" anthor EventLoop in thread.";
 	}
 	l_eventLoopInThread = this;
+	wakeupChannel_->setReadCallback(std::bind(&EventLoop::handleRead, this));
+	wakeupChannel_->enableRead();
 }
 EventLoop::~EventLoop()
 {
 	assert(running_==false);
+	close(wakeupFd_);
 	l_eventLoopInThread = NULL;
 }
 void EventLoop::start()
@@ -114,7 +152,7 @@ void EventLoop::runAt(const TimeStamp& when,const TimerCallback& t_task)
 void EventLoop::queueInLoop(TASK t_task)
 {
 	taskQue_.try_push(t_task);
-	// wake-up
+	wakeup();
 }
 void EventLoop::removeChannel(Channel* channel)
 {
@@ -136,6 +174,25 @@ inline bool EventLoop::isInLoopThread() const
 inline void EventLoop::assertInLoopThread()const
 {
 	assert(isInLoopThread());
+}
+
+void EventLoop::wakeup()
+{
+	uint64_t one = 1;
+	ssize_t n = socketops::send(wakeupFd_, &one, sizeof(one));
+	if(n != sizeof(one)){
+		LOG_ERR<<"EventLoop::wakeup send: "<<n<<" bytes instead of 8";
+	}
+}
+
+void EventLoop::handleRead()
+{
+	uint64_t one = 1;
+	ssize_t n = socketops::read(wakeupFd_, &one, sizeof(one));
+	if(n != sizeof(one)){
+		LOG_ERR<<"EventLoop::wakeup read: "<<n<<" bytes instead of 8";
+	}
+
 }
 /// END CLASS
 
